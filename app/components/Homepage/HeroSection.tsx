@@ -122,8 +122,11 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Box, Heading, Text, Stack, Flex, Button, Icon } from '@chakra-ui/react';
 import { FiArrowRight } from 'react-icons/fi';
 import { useRef } from 'react';
+import { useContactPopup } from '../ContactPopup/ContactContext';
+import Link from 'next/link';
 
 export default function HeroSection() {
+    const { onOpen } = useContactPopup();
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -309,6 +312,8 @@ export default function HeroSection() {
                                     style={{ width: '100%', maxWidth: '280px' }}
                                 >
                                     <Button
+                                        as={Link}
+                                        href="/contact"
                                         size={{ base: "md", md: "lg" }}
                                         px={{ base: 8, md: 10 }}
                                         py={{ base: 6, md: 8 }}

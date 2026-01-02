@@ -7,6 +7,7 @@ import { FiLayout, FiAnchor, FiLayers, FiZap, FiSettings, FiBox, FiCpu } from 'r
 import { AiOutlineRobot, AiOutlineGlobal, AiOutlineMobile, AiOutlineCloud, AiOutlineCode, AiOutlineBulb } from 'react-icons/ai';
 import { CiGrid41 } from 'react-icons/ci';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useContactPopup } from '../ContactPopup/ContactContext';
 
 const industriesItems = [
   { name: 'Finance & Fintech', href: '/industries/finance-fintech', icon: BsBank },
@@ -167,11 +168,13 @@ const navLinks = [
   { name: 'Work', href: '/work' },
   { name: 'Career', href: '/careers' },
   { name: 'About', href: '/about' },
+  { name: 'Contact', href: '/contact' },
   { name: 'FAQ', href: '/faq' },
   { name: 'Regions', href: '/region/pk', dropdown: 'regions' }
 ];
 
 const Header = () => {
+  const { onOpen } = useContactPopup();
   const [isScrolled, setIsScrolled] = useState(false);
   const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -425,8 +428,8 @@ const Header = () => {
                 <div className="mt-10 pt-10 border-t border-neutral-100">
                   <Link
                     href="/contact"
-                    className="flex items-center justify-center w-full py-4 bg-blue-600 text-white rounded-2xl font-bold shadow-lg shadow-blue-100 hover:bg-blue-700 transition-all"
                     onClick={() => setIsMobileMenuOpen(false)}
+                    className="flex items-center justify-center w-full py-4 bg-blue-600 text-white rounded-2xl font-bold shadow-lg shadow-blue-100 hover:bg-blue-700 transition-all font-sora"
                   >
                     Get In Touch
                   </Link>

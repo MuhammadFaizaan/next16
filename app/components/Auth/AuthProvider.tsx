@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 import { createClient } from '../../lib/supabase/client'
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
+import { ContactProvider } from '../ContactPopup/ContactContext'
 
 const theme = extendTheme({
   fonts: {
@@ -29,10 +30,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [router, supabase])
 
   return (
-    <>
+    <ContactProvider>
       <ChakraProvider theme={theme}>
         {children}
       </ChakraProvider>
-    </>
+    </ContactProvider>
   )
 }

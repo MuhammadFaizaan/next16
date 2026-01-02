@@ -3,6 +3,8 @@ import { Sora } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "./components/Auth/AuthProvider";
 import Header from "./components/Header/Header";
+import ScrollContext from "./components/ScrollContext/ScrollContext";
+import ContactPopupWrapper from "./components/ContactPopup/ContactPopupWrapper";
 
 const sora = Sora({
   variable: "--font-sora",
@@ -26,7 +28,10 @@ export default function RootLayout({
         className={`${sora.className} antialiased`}
       >
         <AuthProvider>
-          {children}
+          <ScrollContext>
+            {children}
+            <ContactPopupWrapper />
+          </ScrollContext>
         </AuthProvider>
       </body>
     </html>
