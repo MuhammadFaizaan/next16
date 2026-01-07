@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Sora } from "next/font/google";
+import { Sora, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "./components/Auth/AuthProvider";
 import Header from "./components/Header/Header";
@@ -10,6 +10,12 @@ const sora = Sora({
   variable: "--font-sora",
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
+});
+
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-bricolage",
+  subsets: ["latin"],
+  weight: ["200", "300", "400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -23,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={sora.variable}>
+    <html lang="en" className={`${sora.variable} ${bricolage.variable}`}>
       <body
         className={`${sora.className} antialiased`}
       >

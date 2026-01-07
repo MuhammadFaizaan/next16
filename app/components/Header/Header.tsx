@@ -168,8 +168,6 @@ const navLinks = [
   { name: 'Work', href: '/work' },
   { name: 'Career', href: '/careers' },
   { name: 'About', href: '/about' },
-  { name: 'Contact', href: '/contact' },
-  { name: 'FAQ', href: '/faq' },
   { name: 'Regions', href: '/region/pk', dropdown: 'regions' }
 ];
 
@@ -197,7 +195,7 @@ const Header = () => {
       <header className={`fixed top-0 left-0 z-50 transition-all duration-500 w-full`}>
         <div className={`mx-auto transition-all duration-500 ease-in-out ${isScrolled ? 'max-w-[1400px] mt-4' : 'max-w-full mt-0'}`}>
           <div
-            className={`bg-white/80 backdrop-blur-xl flex items-center justify-between gap-x-4 py-3 px-6 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] border border-white/20 transition-all duration-300 ${isScrolled ? 'rounded-full' : 'rounded-b-2xl'}`}
+            className={`bg-white/80 backdrop-blur-xl flex items-center justify-between gap-x-4 py-3 px-6 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] border border-white/20 transition-all duration-300 ${isScrolled ? 'rounded-full' : 'rounded-none'}`}
           >
             {/* Logo */}
             <div className="flex items-center gap-x-8">
@@ -222,7 +220,7 @@ const Header = () => {
                   >
                     <Link
                       href={link.href}
-                      className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-[15px] font-medium transition-all ${hoveredMenu === link.name ? 'text-blue-600 bg-blue-50' : 'text-neutral-600 hover:text-blue-600'
+                      className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-[15px] font-medium transition-all ${hoveredMenu === link.name ? 'text-red-600 bg-red-50' : 'text-neutral-600 hover:text-red-600'
                         }`}
                     >
                       {link.name}
@@ -246,7 +244,7 @@ const Header = () => {
                               {serviceCategories.map((category) => (
                                 <div key={category.title} className="space-y-6">
                                   <div className="flex items-center gap-3">
-                                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 flex items-center justify-center text-blue-600">
+                                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-red-50 to-indigo-50 flex items-center justify-center text-red-600">
                                       <category.icon size={24} />
                                     </div>
                                     <h3 className="text-[17px] font-bold text-neutral-900 tracking-tight">{category.title}</h3>
@@ -256,9 +254,9 @@ const Header = () => {
                                       <li key={item.name}>
                                         <Link
                                           href={item.href}
-                                          className="flex items-center gap-3.5 text-neutral-500 hover:text-blue-600 transition-all group/item px-2 py-1 -ml-2 rounded-xl hover:bg-neutral-50"
+                                          className="flex items-center gap-3.5 text-neutral-500 hover:text-red-600 transition-all group/item px-2 py-1 -ml-2 rounded-xl hover:bg-neutral-50"
                                         >
-                                          <div className="p-2 rounded-lg bg-neutral-50 group-hover/item:bg-white group-hover/item:shadow-sm transition-all text-neutral-400 group-hover/item:text-blue-500">
+                                          <div className="p-2 rounded-lg bg-neutral-50 group-hover/item:bg-white group-hover/item:shadow-sm transition-all text-neutral-400 group-hover/item:text-red-500">
                                             <item.icon size={18} />
                                           </div>
                                           <span className="text-[14.5px] font-medium leading-tight">{item.name}</span>
@@ -290,12 +288,12 @@ const Header = () => {
                                 <Link
                                   key={item.name}
                                   href={item.href}
-                                  className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-blue-50 transition-colors group/drop"
+                                  className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-red-50 transition-colors group/drop"
                                 >
-                                  <div className="text-neutral-400 group-hover/drop:text-blue-500 transition-colors">
+                                  <div className="text-neutral-400 group-hover/drop:text-red-500 transition-colors">
                                     <item.icon size={18} />
                                   </div>
-                                  <span className="text-sm font-medium text-neutral-700 group-hover/drop:text-blue-600">{item.name}</span>
+                                  <span className="text-sm font-medium text-neutral-700 group-hover/drop:text-red-600">{item.name}</span>
                                 </Link>
                               ))}
                             </div>
@@ -310,12 +308,13 @@ const Header = () => {
 
             {/* CTA and Mobile Toggle */}
             <div className="flex items-center gap-4">
-              <Link
-                href="/contact"
-                className="hidden md:flex px-6 py-2.5 bg-gradient-to-r from-red-600 to-red-600 !text-white text-sm font-bold rounded-full hover:shadow-lg hover:shadow-red-200 transition-all hover:-translate-y-0.5"
+              <button
+                onClick={() => onOpen()}
+                // href="/contact"
+                className="min-w-[200px] px-5 py-5 font-semibold text-[14px] rounded-full leading-6 overflow-hidden relative z-10 group transition-all duration-300 text-white mask-button"
               >
                 Get In Touch
-              </Link>
+              </button>
               <button
                 className="lg:hidden p-2 text-neutral-600 hover:bg-neutral-100 rounded-xl transition-colors"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -345,7 +344,7 @@ const Header = () => {
                 className="fixed right-0 top-0 h-full w-[85%] sm:w-[400px] bg-white z-[50] shadow-2xl p-8 overflow-y-auto"
               >
                 <div className="flex items-center justify-between mb-10">
-                  <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
+                  <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-indigo-600">
                     NextChainX
                   </span>
                   <button
@@ -363,7 +362,7 @@ const Header = () => {
                         <div className="flex flex-col">
                           <button
                             onClick={() => toggleMobileAccordion(link.name)}
-                            className="flex items-center justify-between px-4 py-4 text-lg font-semibold text-neutral-900 hover:text-blue-600 transition-colors"
+                            className="flex items-center justify-between px-4 py-4 text-lg font-semibold text-neutral-900 hover:text-red-600 transition-colors"
                           >
                             {link.name}
                             <BsChevronDown className={`w-4 h-4 transition-transform duration-300 ${openMobileAccordion === link.name ? 'rotate-180' : ''}`} />
@@ -385,7 +384,7 @@ const Header = () => {
                                           <Link
                                             key={item.name}
                                             href={item.href}
-                                            className="flex items-center gap-3 px-3 py-2 text-sm text-neutral-600 hover:text-blue-600 font-medium"
+                                            className="flex items-center gap-3 px-3 py-2 text-sm text-neutral-600 hover:text-red-600 font-medium"
                                             onClick={() => setIsMobileMenuOpen(false)}
                                           >
                                             <item.icon size={16} />
@@ -399,7 +398,7 @@ const Header = () => {
                                       <Link
                                         key={item.name}
                                         href={item.href}
-                                        className="flex items-center gap-3 px-3 py-2 text-sm text-neutral-600 hover:text-blue-600 font-medium"
+                                        className="flex items-center gap-3 px-3 py-2 text-sm text-neutral-600 hover:text-red-600 font-medium"
                                         onClick={() => setIsMobileMenuOpen(false)}
                                       >
                                         <item.icon size={16} />
@@ -415,7 +414,7 @@ const Header = () => {
                       ) : (
                         <Link
                           href={link.href}
-                          className="block px-4 py-4 text-lg font-semibold text-neutral-900 hover:text-blue-600 transition-colors"
+                          className="block px-4 py-4 text-lg font-semibold text-neutral-900 hover:text-red-600 transition-colors"
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
                           {link.name}
@@ -426,13 +425,14 @@ const Header = () => {
                 </ul>
 
                 <div className="mt-10 pt-10 border-t border-neutral-100">
-                  <Link
-                    href="/contact"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="flex items-center justify-center w-full py-4 bg-blue-600 text-white rounded-2xl font-bold shadow-lg shadow-blue-100 hover:bg-blue-700 transition-all font-sora"
+                  <button
+                    // href="/contact"
+                    onClick={() => onOpen()}
+                    className="min-w-[200px] px-5 py-5 font-semibold text-[14px] rounded-full leading-6 overflow-hidden relative z-10 group transition-all duration-300 text-white mask-button"
+
                   >
                     Get In Touch
-                  </Link>
+                  </button>
                 </div>
               </motion.div>
             </>

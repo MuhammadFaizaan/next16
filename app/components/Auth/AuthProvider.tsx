@@ -8,8 +8,8 @@ import { ContactProvider } from '../ContactPopup/ContactContext'
 
 const theme = extendTheme({
   fonts: {
-    heading: 'var(--font-sora), sans-serif',
-    body: 'var(--font-sora), sans-serif',
+    heading: 'var(--font-bricolage), sans-serif',
+    body: 'var(--font-bricolage), sans-serif',
   },
 })
 

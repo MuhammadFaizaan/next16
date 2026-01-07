@@ -197,7 +197,7 @@ export default function ContactPopup({ isOpen, onClose }) {
                     exit={{ opacity: 0 }}
                     position="fixed"
                     inset={0}
-                    bg="rgba(66, 66, 66, 0.4)"
+                    bg="rgba(12, 12, 12, 0.76)"
                     backdropFilter="blur(12px)"
                     zIndex={100}
                     display="flex"
@@ -212,7 +212,7 @@ export default function ContactPopup({ isOpen, onClose }) {
                         initial="hidden"
                         animate="visible"
                         exit="exit"
-                        maxW="1200px"
+                        maxW="1500px"
                         w="100%"
                         maxH={{ base: "calc(100vh - 40px)", lg: "auto" }}
                         bg="#050505"

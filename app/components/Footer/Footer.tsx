@@ -1,7 +1,5 @@
 'use client'
-import React from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { BsTwitterX, BsLinkedin, BsGithub, BsArrowRight } from 'react-icons/bs';
 
 const footerLinks = [
@@ -95,7 +93,7 @@ const Footer = () => {
                     {/* Links Sections */}
                     {footerLinks.map((section, idx) => (
                         <div key={section.title} className="space-y-6">
-                            <h4 className="text-sm font-semibold text-white uppercase tracking-wider opacity-90">
+                            <h4 className="!font-semibold text-white uppercase tracking-wider opacity-90 !mb-6">
                                 {section.title}
                             </h4>
                             <ul className="space-y-3">
