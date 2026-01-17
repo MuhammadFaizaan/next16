@@ -5,6 +5,7 @@ import { AuthProvider } from "./components/Auth/AuthProvider";
 import Header from "./components/Header/Header";
 import ScrollContext from "./components/ScrollContext/ScrollContext";
 import ContactPopupWrapper from "./components/ContactPopup/ContactPopupWrapper";
+import BackToTopButton from "./components/BackToTopButton/BackToTopButton";
 
 const sora = Sora({
   variable: "--font-sora",
@@ -31,6 +32,7 @@ export default function RootLayout({
           <ScrollContext>
             {children}
             <ContactPopupWrapper />
+            <BackToTopButton />
           </ScrollContext>
         </AuthProvider>
       </body>
