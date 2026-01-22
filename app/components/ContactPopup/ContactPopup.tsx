@@ -228,14 +228,41 @@ export default function ContactPopup({ isOpen, onClose }) {
                             'scrollbar-width': 'none',
                         }}
                     >
+                        {/* Bottom Glow Effect */}
                         <Box
                             position="absolute"
-                            bottom="-100px"
+                            bottom="0"
                             left="50%"
                             transform="translateX(-50%)"
-                            w="80%"
-                            h="200px"
-                            bg="radial-gradient(circle, rgba(255, 19, 19, 0.15) 0%, transparent 70%)"
+                            w="150%"
+                            h="400px"
+                            bg="radial-gradient(ellipse 1000px 400px at center bottom, rgba(255, 19, 19, 0.25) 0%, transparent 65%)"
+                            pointerEvents="none"
+                            zIndex={0}
+                        />
+
+                        {/* Left Side Glow */}
+                        <Box
+                            position="absolute"
+                            left="0"
+                            top="50%"
+                            transform="translateY(-50%)"
+                            w="300px"
+                            h="150%"
+                            bg="radial-gradient(ellipse 300px 600px at left center, rgba(255, 19, 19, 0.15) 0%, transparent 70%)"
+                            pointerEvents="none"
+                            zIndex={0}
+                        />
+
+                        {/* Right Side Glow */}
+                        <Box
+                            position="absolute"
+                            right="0"
+                            top="50%"
+                            transform="translateY(-50%)"
+                            w="300px"
+                            h="150%"
+                            bg="radial-gradient(ellipse 300px 600px at right center, rgba(255, 19, 19, 0.15) 0%, transparent 70%)"
                             pointerEvents="none"
                             zIndex={0}
                         />
@@ -336,7 +363,7 @@ export default function ContactPopup({ isOpen, onClose }) {
                             <motion.form variants={childVariants} onSubmit={handleSubmit}>
                                 <VStack spacing={5}>
                                     <FormControl isRequired isInvalid={!!errors.fullName}>
-                                        <FormLabel color="gray.500" fontSize="sm" fontWeight="600" mb={1}>Full Name *</FormLabel>
+                                        <FormLabel color="gray.500" fontSize="sm" fontWeight="600" mb={1}>Full Name</FormLabel>
                                         <Input
                                             name="fullName"
                                             value={formData.fullName}
@@ -351,7 +378,7 @@ export default function ContactPopup({ isOpen, onClose }) {
                                     </FormControl>
 
                                     <FormControl isRequired isInvalid={!!errors.email}>
-                                        <FormLabel color="gray.500" fontSize="sm" fontWeight="600" mb={1}>Email *</FormLabel>
+                                        <FormLabel color="gray.500" fontSize="sm" fontWeight="600" mb={1}>Email</FormLabel>
                                         <Input
                                             name="email"
                                             type="email"
@@ -367,7 +394,7 @@ export default function ContactPopup({ isOpen, onClose }) {
                                     </FormControl>
 
                                     <FormControl isRequired isInvalid={!!errors.contact}>
-                                        <FormLabel color="gray.500" fontSize="sm" fontWeight="600" mb={1}>Contact Number *</FormLabel>
+                                        <FormLabel color="gray.500" fontSize="sm" fontWeight="600" mb={1}>Contact Number</FormLabel>
                                         <PhoneInput
                                             country={'us'}
                                             value={formData.contact}
@@ -393,7 +420,7 @@ export default function ContactPopup({ isOpen, onClose }) {
                                     </FormControl>
 
                                     <FormControl isRequired isInvalid={!!errors.service}>
-                                        <FormLabel color="gray.500" fontSize="sm" fontWeight="600" mb={1}>Services *</FormLabel>
+                                        <FormLabel color="gray.500" fontSize="sm" fontWeight="600" mb={1}>Services</FormLabel>
                                         <Select
                                             name="service"
                                             value={formData.service}
@@ -411,7 +438,7 @@ export default function ContactPopup({ isOpen, onClose }) {
                                     </FormControl>
 
                                     <FormControl isRequired isInvalid={!!errors.message}>
-                                        <FormLabel color="gray.500" fontSize="sm" fontWeight="600" mb={1}>Message *</FormLabel>
+                                        <FormLabel color="gray.500" fontSize="sm" fontWeight="600" mb={1}>Message</FormLabel>
                                         <Textarea
                                             name="message"
                                             value={formData.message}
@@ -463,7 +490,6 @@ export default function ContactPopup({ isOpen, onClose }) {
                                 </VStack>
                             </motion.form>
                         </Box>
-
                         {/* Desktop Close Button Sidebar */}
                         <Box
                             display={{ base: 'none', lg: 'flex' }}
