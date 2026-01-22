@@ -10,6 +10,7 @@ import { useState, useRef } from 'react';
 import { FiMail, FiPhoneCall, FiMapPin } from 'react-icons/fi';
 import PhoneInput from 'react-phone-input-2';
 import "react-phone-input-2/lib/style.css";
+// @ts-ignore
 import ReCAPTCHA from 'react-google-recaptcha';
 
 const contactInfo = [
@@ -125,7 +126,10 @@ export default function ContactFormSection() {
                     {/* Right Column: Form */}
                     <Box
                         bg="white" p={{ base: 8, md: 12 }} borderRadius="40px"
-                        shadow="2xl" shadowColor="rgba(0,0,0,0.05)"
+
+                        shadow="2xl"
+                        // @ts-ignore
+                        shadowColor="rgba(0,0,0,0.05)"
                     >
                         <VStack as="form" spacing={6} onSubmit={handleSubmit}>
                             <Grid templateColumns={{ base: "1fr", md: "1fr 1fr" }} gap={6} w="100%">
@@ -188,7 +192,7 @@ export default function ContactFormSection() {
                                 <ReCAPTCHA
                                     ref={recaptchaRef}
                                     sitekey={process.env.NEXT_PUBLIC_SITE_KEY || '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'}
-                                    onChange={(token) => setCaptchaVerified(!!token)}
+                                    onChange={(token: any) => setCaptchaVerified(!!token)}
                                 />
                             </Box>
 

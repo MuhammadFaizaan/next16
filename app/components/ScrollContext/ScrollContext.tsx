@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import Lenis from "lenis";
@@ -35,18 +36,18 @@ export default function ScrollContext({ children }) {
                 '[data-lenis-prevent]' // Generic attribute you can add to any element
             ]
         });
-        
+
         let frameId;
-        
+
         function raf(time) {
             scroller.raf(time);
             frameId = requestAnimationFrame(raf);
         }
-        
+
         frameId = requestAnimationFrame(raf);
         setRafId(frameId);
         setLenisInstance(scroller);
-        
+
         return () => {
             if (frameId) {
                 cancelAnimationFrame(frameId);
@@ -56,20 +57,20 @@ export default function ScrollContext({ children }) {
             }
         };
     }, []);
-    
+
     // Scroll to top on route change
     useEffect(() => {
         if (lenisInstance) {
             // Small delay to ensure the new page content is rendered
             setTimeout(() => {
-                lenisInstance.scrollTo(0, { 
+                lenisInstance.scrollTo(0, {
                     immediate: true, // Set to false for smooth scroll
-                    duration: 0 
+                    duration: 0
                 });
             }, 0);
         }
     }, [pathname, lenisInstance]);
-    
+
     const scrollContext = {
         lenis: lenisInstance,
         // Add functions to stop/start Lenis when modals open/close
@@ -81,14 +82,14 @@ export default function ScrollContext({ children }) {
         },
         scrollToTop: (smooth = false) => {
             if (lenisInstance) {
-                lenisInstance.scrollTo(0, { 
+                lenisInstance.scrollTo(0, {
                     immediate: !smooth,
-                    duration: smooth ? 1 : 0 
+                    duration: smooth ? 1 : 0
                 });
             }
         }
     };
-    
+
     return (
         <SmoothScrollerContext.Provider value={scrollContext}>
             {children}

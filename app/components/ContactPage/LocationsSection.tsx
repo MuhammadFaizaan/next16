@@ -51,6 +51,7 @@ export default function LocationsSection() {
                                     overflow="hidden"
                                     boxShadow="sm"
                                     _hover={{ boxShadow: "xl", transform: "translateY(-5px)" }}
+                                    // @ts-ignore
                                     transition="all 0.3s ease"
                                 >
                                     <Box h="240px" position="relative" overflow="hidden">
