@@ -309,7 +309,7 @@ const Header = () => {
             <div className="flex items-center gap-4">
               <button
                 onClick={() => onOpen()}
-                className="!min-w-[150px] !px-5 !py-3 font-semibold text-[14px] rounded-full leading-6 overflow-hidden   transition-all duration-300 !text-white  !bg-red-500"
+                className="!min-w-[150px] !px-5 !py-3 font-semibold text-[14px] rounded-full leading-6 overflow-hidden   transition-all duration-300 !text-white  !bg-red-500 hidden sm:block"
               >
                 Get In Touch
               </button>
