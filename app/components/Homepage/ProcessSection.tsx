@@ -36,7 +36,7 @@ const processes = [
         number: '05',
         title: 'Launch',
         description: 'Executing a successful product launch by developing tailored deployment plans, executing a smooth rollout, and offering dedicated post-launch assistance.',
-        img: 'https://images.unsplash.com/photo-1559136555-930d72f1861a?q=80&w=1000&auto=format&fit=crop'
+        img: '/images/launch.jpg'
     },
     {
         number: '06',
@@ -173,13 +173,13 @@ export default function ProcessSection() {
                             position="sticky"
                             top="150px"
                             w="100%"
-                            h="500px" // Fixed height for consistency
+                            h="500px"
                             borderRadius="3xl"
                             overflow="hidden"
                             boxShadow="2xl"
                             bg="whiteAlpha.50"
                         >
-                            <AnimatePresence mode="wait">
+                            <AnimatePresence mode="sync">
                                 <MotionBox
                                     key={activeStep}
                                     initial={{ y: "100%", opacity: 0 }}
