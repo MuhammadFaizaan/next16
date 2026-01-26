@@ -13,7 +13,7 @@ export default function AboutHero() {
 
     return (
         <Box position="relative" pt={{ base: "120px", md: "160px" }} pb={{ base: 12, md: 24 }} overflow="hidden">
-            <Container maxW="1200px">
+            <Container maxW="1400px">
                 <Stack spacing={12}>
                     {/* Header Text */}
                     <Stack spacing={6} maxW="800px">

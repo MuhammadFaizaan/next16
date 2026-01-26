@@ -475,7 +475,7 @@ export default function ContactPopup({ isOpen, onClose }) {
                                             style={{
                                                 width: '100%',
                                                 padding: '16px',
-                                                borderRadius: 'full',
+                                                borderRadius: '10px !important',
                                                 background: isSubmitting ? '#ccc' : 'linear-gradient(90deg, #FF1313, #E60000)',
                                                 color: 'white',
                                                 fontWeight: '700',

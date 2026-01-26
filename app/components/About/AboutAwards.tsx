@@ -42,7 +42,7 @@ const AwardItem = ({ name, issuer, index }: { name: string, issuer: string, inde
 export default function AboutAwards() {
     return (
         <Box py={{ base: 12, md: 24 }} borderTop="1px solid" borderColor={useColorModeValue('gray.100', 'whiteAlpha.100')}>
-            <Container maxW="1200px">
+            <Container maxW="1400px">
                 <Stack spacing={12}>
                     <Box textAlign="center">
                         <motion.div

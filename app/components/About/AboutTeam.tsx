@@ -105,7 +105,7 @@ const TeamCard = ({ name, role, image, index }: { name: string, role: string, im
 export default function AboutTeam() {
     return (
         <Box py={{ base: 12, md: 24 }}>
-            <Container maxW="1200px">
+            <Container maxW="1400px">
                 <Stack spacing={16}>
                     <Box textAlign="center">
                         <motion.div

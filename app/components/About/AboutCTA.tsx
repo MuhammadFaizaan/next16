@@ -32,7 +32,7 @@ export default function AboutCTA() {
             }}
         >
             {/* Content */}
-            <Container maxW="1200px" position="relative" zIndex={1}>
+            <Container maxW="1400px" position="relative" zIndex={1}>
                 <MotionBox
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}

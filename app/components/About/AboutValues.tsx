@@ -75,7 +75,7 @@ const ValueCard = ({ icon, title, description, index }: { icon: any, title: stri
 export default function AboutValues() {
     return (
         <Box py={{ base: 12, md: 24 }} position="relative" overflow="hidden">
-            <Container maxW="1200px">
+            <Container maxW="1400px">
                 <Stack spacing={16}>
                     <Box>
                         <motion.div

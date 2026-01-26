@@ -306,12 +306,10 @@ const Header = () => {
               </ul>
             </nav>
 
-            {/* CTA and Mobile Toggle */}
             <div className="flex items-center gap-4">
               <button
                 onClick={() => onOpen()}
-                // href="/contact"
-                className="min-w-[200px] px-5 py-5 font-semibold text-[14px] rounded-full leading-6 overflow-hidden relative z-10 group transition-all duration-300 text-white mask-button"
+                className="!min-w-[150px] !px-5 !py-3 font-semibold text-[14px] rounded-full leading-6 overflow-hidden   transition-all duration-300 !text-white  !bg-red-500"
               >
                 Get In Touch
               </button>
@@ -429,7 +427,6 @@ const Header = () => {
                     // href="/contact"
                     onClick={() => onOpen()}
                     className="min-w-[200px] px-5 py-5 font-semibold text-[14px] rounded-full leading-6 overflow-hidden relative z-10 group transition-all duration-300 text-white mask-button"
-
                   >
                     Get In Touch
                   </button>
