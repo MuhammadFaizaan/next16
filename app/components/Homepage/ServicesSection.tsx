@@ -31,10 +31,10 @@ const ServiceCard = ({ category, index }: { category: ServiceCategory; index: nu
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            bg="dark.400"
+            bg="black.400"
             _hover={{ transform: 'translateY(-8px)', borderColor: 'brand.red' }}
             border="1px solid"
-            borderColor="whiteAlpha.100"
+            borderColor="black.100"
             borderRadius="2xl"
             p={8}
             height="100%"
@@ -47,12 +47,12 @@ const ServiceCard = ({ category, index }: { category: ServiceCategory; index: nu
         >
             <Box
                 p={4}
-                bg="whiteAlpha.100"
+                bg="black.100"
                 width="fit-content"
                 borderRadius="xl"
                 color="brand.red"
                 mb={6}
-                _groupHover={{ bg: 'brand.red', color: 'white' }}
+                _groupHover={{ bg: 'brand.red', color: 'red.500' }}
                 transition="all 0.3s ease"
             >
                 {/* Use Box wrapper to avoid potential server-client serialization issues if any */}
@@ -61,20 +61,20 @@ const ServiceCard = ({ category, index }: { category: ServiceCategory; index: nu
                 </Box>
             </Box>
 
-            <Heading as="h3" size="lg" mb={4} color="white">
+            <Heading as="h3" size="lg" mb={4} color="black">
                 {category.title}
             </Heading>
 
-            <Text color="whiteAlpha.600" mb={8} flex="1">
+            <Text color="black.600" mb={8} flex="1">
                 {category.description}
             </Text>
 
             <Link href={`/services/${category.slug}`}>
                 <Flex
                     align="center"
-                    color="white"
+                    color="black"
                     fontWeight="bold"
-                    _groupHover={{ color: "brand.red" }}
+                    _groupHover={{ color: "red.500" }}
                     transition="color 0.3s"
                 >
                     Explore Services
@@ -89,8 +89,7 @@ const ServiceCard = ({ category, index }: { category: ServiceCategory; index: nu
 
 export default function ServicesSection() {
     return (
-        <Box bg="black" py={{ base: 24, md: 32 }} position="relative">
-            {/* Background Gradients/Glows could be added here */}
+        <Box py={{ base: 24, md: 32 }} position="relative">
             <Container maxW="1400px">
                 <Box mb={20} textAlign="center">
                     <MotionBox
@@ -118,11 +117,11 @@ export default function ServicesSection() {
                         as="h2"
                         fontSize={{ base: '3xl', md: '5xl', lg: '6xl' }}
                         fontWeight="800"
-                        color="white"
+                        color="black"
                         mb={6}
                     >
-                        High-impact services for <br />
-                        <Box as="span" color="whiteAlpha.500">modern businesses</Box>
+                        High impact services for <br />
+                        <Box as="span" color="black.500">modern businesses</Box>
                     </MotionHeading>
                 </Box>
 

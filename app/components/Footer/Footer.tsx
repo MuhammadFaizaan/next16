@@ -54,7 +54,7 @@ const GridPattern = () => (
 
 const Footer = () => {
     return (
-        <footer className="bg-[#050505] text-white pt-0 pb-10 overflow-hidden relative border-t border-neutral-900">
+        <footer className="bg-[#050505] text-white py-10 overflow-hidden relative !border-t-[2px] !border-red-500">
             {/* Background Effects */}
             <GridPattern />
             <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-red-600/10 blur-[120px] rounded-full pointer-events-none mix-blend-screen" />

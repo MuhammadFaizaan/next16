@@ -1,7 +1,7 @@
 'use client';
 
 import {
-    Box, Container, Grid, GridItem, Heading, Text, VStack,
+    Box, Container, Grid, Heading, Text, VStack,
     FormControl, FormLabel, Input, Textarea, Select,
     FormErrorMessage, useToast, Icon, Flex, HStack
 } from '@chakra-ui/react';
@@ -90,7 +90,6 @@ export default function ContactFormSection() {
         <Box py={{ base: 20, md: 32 }} bg="gray.50">
             <Container maxW="container.xl">
                 <Grid templateColumns={{ base: "1fr", lg: "repeat(2, 1fr)" }} gap={16} alignItems="start">
-                    {/* Left Column: Info */}
                     <VStack align="flex-start" spacing={10}>
                         <VStack align="flex-start" spacing={4}>
                             <Text color="brand-red" fontWeight="700" textTransform="uppercase" letterSpacing="widest">
@@ -123,9 +122,8 @@ export default function ContactFormSection() {
                         </VStack>
                     </VStack>
 
-                    {/* Right Column: Form */}
                     <Box
-                        bg="white" p={{ base: 8, md: 12 }} borderRadius="40px"
+                        bg="white" p={{ base: 8, md: 12 }} borderRadius="3xl"
 
                         shadow="2xl"
                         // @ts-ignore

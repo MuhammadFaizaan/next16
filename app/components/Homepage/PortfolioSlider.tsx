@@ -76,13 +76,13 @@ export default function PortfolioSlider() {
         <Box
             as="section"
             bg="black"
+            my={{ base: 12, md: 24 }}
             py={{ base: 12, md: 24 }}
             position="relative"
             overflow="hidden"
             color="white"
-            w="calc(100vw - 100px)"
+            w="100%"
             mx={'auto'}
-            borderRadius={'2xl'}
             mb={20}
         >
             {/* Wavy Background Elements (Improved) */}

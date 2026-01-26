@@ -11,7 +11,7 @@ export default function ContactHero() {
             pb={{ base: "80px", md: "120px" }}
             bg="#050505"
             overflow="hidden"
-            borderBottomRadius={{ base: "40px", md: "80px" }}
+        // borderBottomRadius={{ base: "40px", md: "80px" }}
         >
             {/* Video Background */}
             <Box position="absolute" inset={0} zIndex={0}>
@@ -35,7 +35,7 @@ export default function ContactHero() {
                     position="absolute"
                     inset={0}
                     bgGradient="linear(to-b, #050505, transparent, #050505)"
-                    opacity={0.7}
+                    opacity={0.5}
                 />
             </Box>
 

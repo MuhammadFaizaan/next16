@@ -1,7 +1,7 @@
 'use client';
 
 import { Box, Container, Flex, Heading, Stack, Text, useColorModeValue } from '@chakra-ui/react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 
 const MotionBox = motion(Box);
@@ -47,9 +47,12 @@ const processes = [
 ];
 
 // Component to handle individual step visibility
-const ProcessStep = ({ process, index, setActiveStep }: { process: typeof processes[0], index: number, setActiveStep: (index: number) => void }) => {
+const ProcessStep = ({ process, index, setActiveStep, activeStep }: { process: typeof processes[0], index: number, setActiveStep: (index: number) => void, activeStep: number }) => {
     const ref = useRef(null);
-    const isInView = useInView(ref, { margin: "-50% 0px -50% 0px" });
+    const isInView = useInView(ref, {
+        margin: "-45% 0px -45% 0px",
+        amount: "some"
+    });
 
     useEffect(() => {
         if (isInView) {
@@ -63,31 +66,18 @@ const ProcessStep = ({ process, index, setActiveStep }: { process: typeof proces
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-10%" }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            py={20} // Add significant padding to ensure scroll distance
-            borderLeft="1px solid"
-            borderColor="whiteAlpha.200"
-            pl={10}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            py={{ base: 20, md: 32 }} // increased padding for better scroll feel
             position="relative"
-            _before={{
-                content: '""',
-                position: 'absolute',
-                left: '-1px',
-                top: '0',
-                bottom: '0',
-                width: '1px',
-                bg: 'red.400',
-                transform: isInView ? 'scaleY(1)' : 'scaleY(0)',
-                transformOrigin: 'top',
-                transition: 'transform 0.5s ease'
-            }}
+            pl={12}
         >
             <Text
                 fontSize="sm"
                 fontWeight="bold"
-                color={isInView ? "red.400" : "whiteAlpha.500"}
+                color={activeStep === index ? "red.400" : "whiteAlpha.500"}
                 mb={2}
                 letterSpacing="widest"
+                transition="color 0.4s"
             >
                 {process.number}/{processes.length < 10 ? `0${processes.length}` : processes.length}
             </Text>
@@ -95,17 +85,18 @@ const ProcessStep = ({ process, index, setActiveStep }: { process: typeof proces
                 as="h3"
                 fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
                 fontWeight="700"
-                color={isInView ? "white" : "whiteAlpha.500"}
+                color={activeStep === index ? "white" : "whiteAlpha.400"}
                 mb={6}
-                transition="color 0.3s"
+                transition="color 0.4s"
             >
                 {process.title}
             </Heading>
             <Text
                 fontSize={{ base: "md", md: "lg" }}
-                color="whiteAlpha.700"
+                color={activeStep === index ? "whiteAlpha.800" : "whiteAlpha.300"}
                 lineHeight="1.7"
                 maxW="md"
+                transition="color 0.4s"
             >
                 {process.description}
             </Text>
@@ -138,7 +129,27 @@ export default function ProcessSection() {
 
                 <Flex gap={{ base: 12, lg: 24 }} direction={{ base: 'column-reverse', lg: 'row' }}>
                     {/* Left Side: Scrollable Steps */}
-                    <Box flex="1">
+                    <Box flex="1" position="relative">
+                        {/* Unified Left Line */}
+                        <Box
+                            position="absolute"
+                            left="0"
+                            top="0"
+                            bottom="0"
+                            width="2px"
+                            bg="whiteAlpha.200"
+                        >
+                            <Box
+                                position="absolute"
+                                top={`${(activeStep / processes.length) * 100}%`}
+                                height={`${(1 / processes.length) * 100}%`}
+                                width="100%"
+                                bg="red.500"
+                                transition="top 0.4s cubic-bezier(0.4, 0, 0.2, 1)"
+                                boxShadow="0 0 10px rgba(245, 101, 101, 0.5)"
+                            />
+                        </Box>
+
                         <Stack spacing={0}>
                             {processes.map((process, index) => (
                                 <ProcessStep
@@ -146,6 +157,7 @@ export default function ProcessSection() {
                                     process={process}
                                     index={index}
                                     setActiveStep={setActiveStep}
+                                    activeStep={activeStep}
                                 />
                             ))}
                         </Stack>
@@ -165,40 +177,38 @@ export default function ProcessSection() {
                             borderRadius="3xl"
                             overflow="hidden"
                             boxShadow="2xl"
+                            bg="whiteAlpha.50"
                         >
-                            {processes.map((process, index) => (
-                                <Box
-                                    key={index}
+                            <AnimatePresence mode="wait">
+                                <MotionBox
+                                    key={activeStep}
+                                    initial={{ y: "100%", opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
+                                    exit={{ y: "-100%", opacity: 0 }}
+                                    transition={{
+                                        duration: 0.6,
+                                        ease: [0.4, 0, 0.2, 1]
+                                    }}
                                     position="absolute"
-                                    top="0"
-                                    left="0"
-                                    w="100%"
-                                    h="100%"
-                                    opacity={activeStep === index ? 1 : 0}
-                                    transition="opacity 0.5s ease-in-out"
-                                    pointerEvents="none"
+                                    inset="0"
                                 >
-                                    {/* Using a Gradient Overlay to make text pop if needed, though clean image is requested */}
                                     <Box
                                         position="absolute"
                                         inset="0"
-                                        bgGradient="radial(circle at center, transparent 0%, rgba(0,0,0,0.3) 100%)"
+                                        bgGradient="linear(to-t, blackAlpha.600, transparent)"
                                         zIndex="1"
                                     />
-                                    {/* Ideally we'd use next/image here */}
                                     <img
-                                        src={process.img}
-                                        alt={process.title}
+                                        src={processes[activeStep].img}
+                                        alt={processes[activeStep].title}
                                         style={{
                                             width: '100%',
                                             height: '100%',
                                             objectFit: 'cover',
-                                            transform: activeStep === index ? 'scale(1.05)' : 'scale(1)',
-                                            transition: 'transform 6s ease-out'
                                         }}
                                     />
-                                </Box>
-                            ))}
+                                </MotionBox>
+                            </AnimatePresence>
                         </Box>
                     </Box>
                 </Flex>
