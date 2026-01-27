@@ -59,9 +59,9 @@ export default function ProjectDetails() {
         );
     }
 
-    return (
+    return (<>
+        <Header />
         <Box bg="black" color="white" minH="100vh" ref={containerRef}>
-            <Header />
 
             <main>
                 {/* Immersive Parallax Hero Section */}
@@ -356,8 +356,8 @@ export default function ProjectDetails() {
                     </Container>
                 </Box>
             </main>
-
-            <Footer />
         </Box>
+        <Footer />
+    </>
     );
 }
