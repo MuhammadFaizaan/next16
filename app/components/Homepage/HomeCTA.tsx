@@ -1,13 +1,11 @@
 'use client';
 
-import { Box, Container, Heading, Text, Button, VStack, Icon, Flex } from '@chakra-ui/react';
+import { Box, Container, Heading, Text, Button, VStack } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { FiArrowRight, FiZap } from 'react-icons/fi';
 
 const MotionBox = motion(Box);
-const MotionHeading = motion(Heading);
-const MotionText = motion(Text);
 
 export default function HomeCTA() {
     return (

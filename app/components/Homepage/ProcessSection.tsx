@@ -46,7 +46,6 @@ const processes = [
     }
 ];
 
-// Component to handle individual step visibility
 const ProcessStep = ({ process, index, setActiveStep, activeStep }: { process: typeof processes[0], index: number, setActiveStep: (index: number) => void, activeStep: number }) => {
     const ref = useRef(null);
     const isInView = useInView(ref, {
@@ -67,7 +66,7 @@ const ProcessStep = ({ process, index, setActiveStep, activeStep }: { process: t
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            py={{ base: 20, md: 32 }} // increased padding for better scroll feel
+            py={{ base: 20, md: 32 }}
             position="relative"
             pl={12}
         >
@@ -128,9 +127,7 @@ export default function ProcessSection() {
                 </Box>
 
                 <Flex gap={{ base: 12, lg: 24 }} direction={{ base: 'column-reverse', lg: 'row' }}>
-                    {/* Left Side: Scrollable Steps */}
                     <Box flex="1" position="relative">
-                        {/* Unified Left Line */}
                         <Box
                             position="absolute"
                             left="0"
@@ -163,7 +160,6 @@ export default function ProcessSection() {
                         </Stack>
                     </Box>
 
-                    {/* Right Side: Sticky Image */}
                     <Box
                         flex="1"
                         position="relative"
