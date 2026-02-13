@@ -312,8 +312,7 @@ export default function HeroSection() {
                                     style={{ width: '100%', maxWidth: '280px' }}
                                 >
                                     <Button
-                                        as={Link}
-                                        href="/contact"
+                                        onClick={() => onOpen()}
                                         size={{ base: "md", md: "lg" }}
                                         px={{ base: 8, md: 10 }}
                                         py={{ base: 6, md: 8 }}
@@ -323,7 +322,7 @@ export default function HeroSection() {
                                         color="black"
                                         _hover={{
                                             bg: "brand-red",
-                                            color: "white",
+                                            color: "red.500",
                                             transform: "translateY(-2px)",
                                             shadow: "0 10px 40px rgba(239, 68, 68, 0.4)"
                                         }}
@@ -352,6 +351,8 @@ export default function HeroSection() {
                                     whileHover={{ x: 5 }}
                                 >
                                     <Button
+                                        as={Link}
+                                        href="/work"
                                         variant="link"
                                         color="white"
                                         size={{ base: "md", md: "lg" }}
