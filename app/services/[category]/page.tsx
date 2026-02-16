@@ -5,11 +5,37 @@ import Header from '@/app/components/Header/Header';
 import Footer from '@/app/components/Footer/Footer';
 import Link from 'next/link';
 import { BsArrowRight } from 'react-icons/bs';
+import type { Metadata } from 'next';
 
 interface PageProps {
     params: Promise<{
         category: string;
     }>;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+    const { category } = await params;
+    const categoryData = servicesData.find((c) => c.slug === category);
+
+    if (!categoryData) {
+        return {
+            title: "Category Not Found | NextChainX",
+        };
+    }
+
+    return {
+        title: `${categoryData.title} | AI & Blockchain Services | NextChainX`,
+        description: categoryData.description,
+        openGraph: {
+            title: `${categoryData.title} | AI & Blockchain Services | NextChainX`,
+            description: categoryData.description,
+            url: `https://www.nextchainx.io/services/${category}`,
+            images: [{ url: "https://www.nextchainx.io/images/seo_image.jpg" }],
+        },
+        alternates: {
+            canonical: `https://www.nextchainx.io/services/${category}`,
+        },
+    };
 }
 
 export async function generateStaticParams() {

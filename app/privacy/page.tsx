@@ -1,6 +1,21 @@
+import type { Metadata } from "next";
 import LegalLayout from '../components/Legal/LegalLayout';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
+
+export const metadata: Metadata = {
+    title: "Privacy Policy | NextChainX",
+    description: "Read NextChainX's privacy policy to understand how we collect, use, and protect your data in our AI and blockchain engineering projects.",
+    openGraph: {
+        title: "Privacy Policy | NextChainX",
+        description: "Read NextChainX's privacy policy to understand how we collect, use, and protect your data in our AI and blockchain engineering projects.",
+        url: "https://www.nextchainx.io/privacy",
+        images: [{ url: "https://www.nextchainx.io/images/seo_image.jpg" }],
+    },
+    alternates: {
+        canonical: "https://www.nextchainx.io/privacy",
+    },
+};
 
 export default function PrivacyPage() {
     return (

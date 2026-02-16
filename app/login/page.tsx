@@ -1,4 +1,10 @@
+import type { Metadata } from 'next';
 import { signIn, signUp, resendConfirmationEmail } from '../actions/auth'
+
+export const metadata: Metadata = {
+  title: "Login | NextChainX",
+  description: "Sign in to your NextChainX account to manage your projects and access engineering resources.",
+};
 
 export default function LoginPage({
   searchParams,
@@ -11,7 +17,7 @@ export default function LoginPage({
     <div className="flex min-h-screen items-center justify-center bg-gray-50">
       <div className="w-full max-w-md space-y-8 rounded-lg border bg-white p-8 shadow-sm">
         <h2 className="text-center text-3xl font-bold">Sign In</h2>
-        
+
         {searchParams.error && (
           <div className="rounded-md bg-red-50 border border-red-200 p-4">
             <p className="text-sm text-red-800">{searchParams.error}</p>
@@ -23,7 +29,7 @@ export default function LoginPage({
             <p className="text-sm text-green-800">{searchParams.message}</p>
           </div>
         )}
-        
+
         <form className="space-y-6">
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">

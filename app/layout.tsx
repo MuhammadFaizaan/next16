@@ -20,8 +20,28 @@ const bricolage = Bricolage_Grotesque({
 });
 
 export const metadata: Metadata = {
-  title: "Next JS 16",
-  description: "Next JS 16",
+  title: "AI & Blockchain Engineering Company | NextChainX",
+  description: "NextChainX builds AI systems, blockchain platforms, and scalable digital products. From MVPs to enterprise solutions across global markets.",
+  keywords: "NextChainX, AI engineering, blockchain development, AI systems, blockchain platforms, digital products, MVP development, enterprise solutions, smart contracts, DeFi, tokenization",
+  authors: [{ name: "NextChainX" }],
+  robots: "index, follow",
+  openGraph: {
+    title: "AI & Blockchain Engineering Company | NextChainX",
+    description: "NextChainX builds AI systems, blockchain platforms, and scalable digital products. From MVPs to enterprise solutions across global markets.",
+    type: "website",
+    url: "https://www.nextchainx.io/",
+    siteName: "NextChainX",
+    images: [{ url: "https://www.nextchainx.io/images/seo_image.jpg" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI & Blockchain Engineering Company | NextChainX",
+    description: "NextChainX builds AI systems, blockchain platforms, and scalable digital products. From MVPs to enterprise solutions across global markets.",
+    images: ["https://www.nextchainx.io/images/seo_image.jpg"],
+  },
+  alternates: {
+    canonical: "https://www.nextchainx.io/",
+  },
 };
 
 export default function RootLayout({

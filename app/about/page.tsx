@@ -1,30 +1,21 @@
-'use client';
+import type { Metadata } from "next";
+import AboutClient from './AboutClient';
 
-import Header from '../components/Header/Header';
-import Footer from '../components/Footer/Footer';
-import AboutHero from '../components/About/AboutHero';
-import AboutStats from '../components/About/AboutStats';
-import AboutValues from '../components/About/AboutValues';
-import AboutTeam from '../components/About/AboutTeam';
-import AboutAwards from '../components/About/AboutAwards';
-import AboutCTA from '../components/About/AboutCTA';
-import ContactSection from '../components/ContactPage/ContactFormSection';
-import { Box } from '@chakra-ui/react';
+export const metadata: Metadata = {
+    title: "About Us | AI & Blockchain Engineering Experts | NextChainX",
+    description: "Learn about NextChainX's mission to build the future of AI and blockchain. Our team of experts delivers scalable enterprise solutions and innovative digital products.",
+    keywords: "About NextChainX, AI experts, blockchain engineers, technology mission, digital transformation team",
+    openGraph: {
+        title: "About Us | AI & Blockchain Engineering Experts | NextChainX",
+        description: "Learn about NextChainX's mission to build the future of AI and blockchain. Our team of experts delivers scalable enterprise solutions and innovative digital products.",
+        url: "https://www.nextchainx.io/about",
+        images: [{ url: "https://www.nextchainx.io/images/seo_image.jpg" }],
+    },
+    alternates: {
+        canonical: "https://www.nextchainx.io/about",
+    },
+};
 
 export default function AboutPage() {
-    return (
-        <>
-            <Header />
-            <Box as="main" overflow="hidden">
-                <AboutHero />
-                <AboutStats />
-                <AboutValues />
-                <AboutTeam />
-                <AboutAwards />
-                <AboutCTA />
-                <ContactSection />
-            </Box>
-            <Footer />
-        </>
-    );
+    return <AboutClient />;
 }

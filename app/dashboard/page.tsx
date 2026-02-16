@@ -1,6 +1,12 @@
+import type { Metadata } from 'next'
 import { redirect } from 'next/navigation'
 import { signOut } from '../actions/auth'
 import { createClient } from '../lib/supabase/server'
+
+export const metadata: Metadata = {
+  title: 'Dashboard | NextChainX',
+  robots: 'noindex, nofollow',
+};
 
 export default async function DashboardPage() {
   const supabase = await createClient()
@@ -25,7 +31,7 @@ export default async function DashboardPage() {
             </button>
           </form>
         </div>
-        
+
         <div className="rounded-lg border p-6">
           <h2 className="text-xl font-semibold mb-4">User Info</h2>
           <p className="text-white">Email: {user.email}</p>

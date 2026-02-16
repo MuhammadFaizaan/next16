@@ -1,6 +1,21 @@
+import type { Metadata } from "next";
 import LegalLayout from '../components/Legal/LegalLayout';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
+
+export const metadata: Metadata = {
+    title: "Terms and Conditions | NextChainX",
+    description: "Review the terms and conditions for using NextChainX's AI, blockchain, and digital engineering services.",
+    openGraph: {
+        title: "Terms and Conditions | NextChainX",
+        description: "Review the terms and conditions for using NextChainX's AI, blockchain, and digital engineering services.",
+        url: "https://www.nextchainx.io/terms",
+        images: [{ url: "https://www.nextchainx.io/images/seo_image.jpg" }],
+    },
+    alternates: {
+        canonical: "https://www.nextchainx.io/terms",
+    },
+};
 
 export default function TermsPage() {
     return (

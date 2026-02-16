@@ -1,30 +1,21 @@
-'use client';
+import type { Metadata } from "next";
+import CareersClient from './CareersClient';
 
-import { Box } from '@chakra-ui/react';
-import Header from '../components/Header/Header';
-import Footer from '../components/Footer/Footer';
-import CareerHero from '../components/Careers/CareerHero';
-import CultureSlider from '../components/Careers/CultureSlider';
-import HiringProcess from '../components/Careers/HiringProcess';
-import CareerPerks from '../components/Careers/CareerPerks';
-import JobOpenings from '../components/Careers/JobOpenings';
-import TestimonialSlider from '../components/Careers/TestimonialSlider';
-import OfficeLife from '../components/Careers/OfficeLife';
+export const metadata: Metadata = {
+    title: "Careers | Join the NextChainX Team | AI & Blockchain Jobs",
+    description: "Explore career opportunities at NextChainX. Join our mission to build innovative AI and blockchain systems. Work with global markets and cutting-edge technology.",
+    keywords: "NextChainX careers, AI jobs, blockchain development jobs, tech careers, hiring software engineers",
+    openGraph: {
+        title: "Careers | Join the NextChainX Team | AI & Blockchain Jobs",
+        description: "Explore career opportunities at NextChainX. Join our mission to build innovative AI and blockchain systems. Work with global markets and cutting-edge technology.",
+        url: "https://www.nextchainx.io/careers",
+        images: [{ url: "https://www.nextchainx.io/images/seo_image.jpg" }],
+    },
+    alternates: {
+        canonical: "https://www.nextchainx.io/careers",
+    },
+};
 
 export default function CareersPage() {
-    return (
-        <>
-            <Header />
-            <Box as="main" bg="white" overflow="hidden">
-                <CareerHero />
-                <CultureSlider />
-                <HiringProcess />
-                <CareerPerks />
-                <JobOpenings />
-                <TestimonialSlider />
-                <OfficeLife />
-            </Box>
-            <Footer />
-        </>
-    );
+    return <CareersClient />;
 }

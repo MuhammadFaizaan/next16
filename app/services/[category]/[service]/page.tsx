@@ -5,12 +5,36 @@ import Header from '@/app/components/Header/Header';
 import Footer from '@/app/components/Footer/Footer';
 import Link from 'next/link';
 import { BsArrowLeft, BsCheckCircleFill, BsArrowRight } from 'react-icons/bs';
+import type { Metadata } from 'next';
 
 interface PageProps {
     params: Promise<{
         category: string;
         service: string;
     }>;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+    const { category, service } = await params;
+    const categoryData = servicesData.find((c) => c.slug === category);
+    if (!categoryData) return { title: "Service Not Found | NextChainX" };
+
+    const serviceData = categoryData.services.find((s) => s.slug === service);
+    if (!serviceData) return { title: "Service Not Found | NextChainX" };
+
+    return {
+        title: `${serviceData.title} | ${categoryData.title} | NextChainX`,
+        description: serviceData.shortDescription,
+        openGraph: {
+            title: `${serviceData.title} | ${categoryData.title} | NextChainX`,
+            description: serviceData.shortDescription,
+            url: `https://www.nextchainx.io/services/${category}/${service}`,
+            images: [{ url: serviceData.image }],
+        },
+        alternates: {
+            canonical: `https://www.nextchainx.io/services/${category}/${service}`,
+        },
+    };
 }
 
 export async function generateStaticParams() {
