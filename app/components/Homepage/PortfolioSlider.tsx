@@ -8,11 +8,13 @@ import {
     HStack,
     Image,
     Stack,
-    Tag,
     Text,
+    IconButton,
 } from '@chakra-ui/react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect, useCallback } from 'react';
+import { useEffect } from 'react';
+import { useState, useCallback } from 'react';
+import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 
 const MotionBox = motion(Box);
 
@@ -54,244 +56,188 @@ const portfolioItems = [
         image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2832&auto=format&fit=crop',
     },
 ];
+const AUTO_PLAY_INTERVAL = 5000; 
 
 export default function PortfolioSlider() {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [direction, setDirection] = useState(0);
 
     const nextSlide = useCallback(() => {
+        setDirection(1);
         setCurrentIndex((prev) => (prev + 1) % portfolioItems.length);
     }, []);
 
     const prevSlide = useCallback(() => {
+        setDirection(-1);
         setCurrentIndex((prev) => (prev - 1 + portfolioItems.length) % portfolioItems.length);
     }, []);
 
-    // Auto-slide effect
     useEffect(() => {
-        const interval = setInterval(nextSlide, 3000);
-        return () => clearInterval(interval);
+        const timer = setInterval(() => {
+            nextSlide();
+        }, AUTO_PLAY_INTERVAL);
+
+        return () => clearInterval(timer);
     }, [nextSlide]);
+
+    const activeItem = portfolioItems[currentIndex];
 
     return (
         <Box
             as="section"
-            bg="black"
-            my={{ base: 12, md: 24 }}
-            py={{ base: 12, md: 24 }}
+            bg="#050505"
+            py={{ base: 20, md: 32 }}
             position="relative"
             overflow="hidden"
             color="white"
-            w="100%"
-            mx={'auto'}
-            mb={20}
         >
-            {/* Wavy Background Elements (Improved) */}
-            <Box
-                position="absolute"
-                top="0"
-                right="-10%"
-                opacity="0.3"
-                pointerEvents="none"
-                zIndex={0}
-            >
-                <svg width="1000" height="1000" viewBox="0 0 1000 1000">
-                    {[...Array(15)].map((_, i) => (
-                        <path
-                            key={i}
-                            d={`M0 ${200 + i * 30} C 300 ${100 + i * 30}, 700 ${400 + i * 30}, 1000 ${200 + i * 30}`}
-                            stroke="#E2E8F0"
-                            fill="transparent"
-                            strokeWidth="1.5"
-                        />
-                    ))}
-                </svg>
-            </Box>
-
-            <Container maxW="1400px" position="relative" zIndex={1}>
-                {/* Header */}
-                <Stack spacing={2} mb={12} px={{ base: 4, md: 0 }}>
-                    <Text
-                        color="#FF4D00"
-                        fontSize="sm"
-                        fontWeight="600"
-                        letterSpacing="0.1em"
-                    >
-                        / portfolio /
-                    </Text>
-                    <Heading
-                        as="h2"
-                        fontSize={{ base: '3xl', sm: '4xl', md: '5xl', lg: '6xl' }}
-                        fontWeight="400"
-                        maxW="800px"
-                        lineHeight="1.1"
-                        letterSpacing="-0.02em"
-                    >
-                        From Concept to Code,<br />Seamlessly Delivered
-                    </Heading>
-                </Stack>
-            </Container>
-
-            {/* Swiper Layout Area */}
-            <Box position="relative" w="100%" overflow="hidden" px={0}>
-                <Flex
-                    justify="center"
-                    align="center"
-                    position="relative"
-                    h={{ base: '600px', md: '750px' }}
+            <AnimatePresence mode="wait">
+                <MotionBox
+                    key={activeItem.title}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 0.03, scale: 1 }}
+                    exit={{ opacity: 0, scale: 1.1 }}
+                    transition={{ duration: 1 }}
+                    position="absolute"
+                    top="50%"
+                    left="50%"
+                    transform="translate(-50%, -50%)"
+                    zIndex={0}
+                    pointerEvents="none"
                 >
-                    <AnimatePresence initial={false}>
-                        {portfolioItems.map((item, index) => {
-                            const isCenter = index === currentIndex;
-                            const isLeft = index === (currentIndex - 1 + portfolioItems.length) % portfolioItems.length;
-                            const isRight = index === (currentIndex + 1) % portfolioItems.length;
+                    <Text
+                        fontSize={{ base: "8rem", md: "22rem" }}
+                        fontWeight="900"
+                        lineHeight="1"
+                        whiteSpace="nowrap"
+                        textAlign="center"
+                    >
+                        {activeItem.title.toUpperCase()}
+                    </Text>
+                </MotionBox>
+            </AnimatePresence>
 
-                            if (!isCenter && !isLeft && !isRight) return null;
-
-                            let xPos = '0%';
-                            let scale = 0.85;
-                            let opacity = 0.4;
-                            let zIndex = 1;
-
-                            if (isCenter) {
-                                xPos = '0%';
-                                scale = 1;
-                                opacity = 1;
-                                zIndex = 10;
-                            } else if (isLeft) {
-                                xPos = '-100%';
-                                scale = 0.95;
-                                opacity = 0.8;
-                                zIndex = 5;
-                            } else if (isRight) {
-                                xPos = '100%';
-                                scale = 0.95;
-                                opacity = 0.8;
-                                zIndex = 5;
-                            }
-
-                            return (
-                                <MotionBox
-                                    key={item.id}
-                                    position="absolute"
-                                    w={{ base: '90%', md: '1000px' }}
-                                    h={{ base: '500px', md: '650px' }}
-                                    initial={{ opacity: 0, scale: 0.8, x: isRight ? '100%' : '-100%' }}
-                                    animate={{
-                                        opacity,
-                                        scale,
-                                        x: xPos,
-                                        zIndex,
-                                    }}
-                                    exit={{ opacity: 0, scale: 0.8, x: isLeft ? '-100%' : '100%' }}
-                                    transition={{
-                                        type: "spring",
-                                        stiffness: 260,
-                                        damping: 30,
-                                        opacity: { duration: 0.4 }
-                                    }}
-                                    bg="#3d3d3dcb"
-                                    borderRadius="40px"
-                                    p={{ base: 6, md: 10 }}
-                                    color="white"
-                                    // boxShadow="2xl"
-                                    display="flex"
-                                    flexDirection="column"
-                                    cursor="pointer"
-                                    onClick={() => {
-                                        if (isLeft) prevSlide();
-                                        if (isRight) nextSlide();
-                                    }}
+            <Container maxW="1400px" position="relative" zIndex={2}>
+                <Flex direction={{ base: 'column', lg: 'row' }} align="center" gap={12}>
+                    <Stack spacing={8} flex="1" zIndex={3}>
+                        <Box>
+                            <HStack spacing={3} mb={4}>
+                                <Box h="1px" w="40px" bg="#FF4D00" />
+                                <Text
+                                    color="#FF4D00"
+                                    fontSize="xs"
+                                    fontWeight="800"
+                                    letterSpacing="0.4em"
+                                    textTransform="uppercase"
                                 >
-                                    {/* Card Content Top */}
-                                    <Flex justify="space-between" align="start" mb={6}>
-                                        <HStack spacing={2} wrap="wrap" maxW="80%">
-                                            {item.tags.map((tag) => (
-                                                <Tag
-                                                    key={tag}
-                                                    bg="transparent"
-                                                    border="1px solid"
-                                                    borderColor="whiteAlpha.300"
-                                                    color="whiteAlpha.800"
-                                                    fontSize="xs"
-                                                    px={3}
-                                                    py={1}
-                                                    borderRadius="full"
-                                                >
-                                                    {tag}
-                                                </Tag>
-                                            ))}
-                                        </HStack>
-                                        <Box
-                                            bg="#FF4D00"
-                                            px={4}
-                                            py={1}
-                                            borderRadius="xl"
-                                            fontSize="sm"
-                                            fontWeight="700"
-                                        >
-                                            {item.year}
-                                        </Box>
-                                    </Flex>
+                                    Project {String(currentIndex + 1).padStart(2, '0')} // {activeItem.year}
+                                </Text>
+                            </HStack>
 
-                                    {/* Title & Description */}
-                                    <Stack spacing={3} mb={8}>
-                                        <Heading
-                                            as="h3"
-                                            fontSize={{ base: '2xl', md: '4xl' }}
-                                            color="#FF4D00"
-                                            fontWeight="700"
-                                        >
-                                            {item.title}
-                                        </Heading>
-                                        <Text
-                                            fontSize={{ base: 'sm', md: 'md' }}
-                                            color="whiteAlpha.700"
-                                            lineHeight="1.5"
-                                            noOfLines={3}
-                                        >
-                                            {item.description}
-                                        </Text>
-                                    </Stack>
-
-                                    {/* Project Image Area */}
-                                    <Box
-                                        flex="1"
-                                        w="100%"
-                                        borderRadius="20px"
-                                        overflow="hidden"
-                                        bg="#1a1a1a"
-                                        position="relative"
+                            <AnimatePresence mode="wait">
+                                <MotionBox
+                                    key={activeItem.id}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -20 }}
+                                    transition={{ duration: 0.6, ease: "easeOut" }}
+                                >
+                                    <Heading
+                                        as="h2"
+                                        fontSize={{ base: '4xl', md: '7xl' }}
+                                        lineHeight="1"
+                                        mb={6}
+                                        letterSpacing="-0.04em"
                                     >
-                                        <Image
-                                            src={item.image}
-                                            alt={item.title}
-                                            w="100%"
-                                            h="100%"
-                                            objectFit="cover"
-                                        />
-                                    </Box>
+                                        {activeItem.title}
+                                    </Heading>
+                                    <Text
+                                        fontSize="lg"
+                                        color="whiteAlpha.800"
+                                        maxW="450px"
+                                        lineHeight="1.6"
+                                    >
+                                        {activeItem.description}
+                                    </Text>
                                 </MotionBox>
-                            );
-                        })}
-                    </AnimatePresence>
-                </Flex>
+                            </AnimatePresence>
+                        </Box>
 
-                {/* Custom Pagination Dots */}
-                <HStack justify="center" mt={-8} spacing={3} position="relative" zIndex={20}>
-                    {portfolioItems.map((_, index) => (
-                        <Box
-                            key={index}
-                            w={index === currentIndex ? "12px" : "8px"}
-                            h={index === currentIndex ? "12px" : "8px"}
-                            bg={index === currentIndex ? "#FF4D00" : "gray.300"}
-                            borderRadius="full"
-                            cursor="pointer"
-                            transition="all 0.3s ease"
-                            onClick={() => setCurrentIndex(index)}
-                        />
-                    ))}
-                </HStack>
-            </Box>
+                        <HStack spacing={4} wrap="wrap">
+                            {activeItem.tags.map((tag) => (
+                                <Text key={tag} fontSize="xs" fontWeight="700" color="whiteAlpha.700" letterSpacing="widest">
+                                    #{tag}
+                                </Text>
+                            ))}
+                        </HStack>
+
+                        <HStack spacing={4} pt={4}>
+                            <IconButton
+                                aria-label="Prev"
+                                icon={<FiArrowLeft />}
+                                onClick={prevSlide}
+                                variant="outline"
+                                colorScheme="whiteAlpha.800"
+                                rounded="full"
+                                size="lg"
+                                _hover={{ bg: '#FF4D00', borderColor: '#FF4D00', transform: 'scale(1.1)' }}
+                            />
+                            <IconButton
+                                aria-label="Next"
+                                icon={<FiArrowRight />}
+                                onClick={nextSlide}
+                                variant="outline"
+                                colorScheme="whiteAlpha.800"
+                                rounded="full"
+                                size="lg"
+                                _hover={{ bg: '#FF4D00', borderColor: '#FF4D00', transform: 'scale(1.1)' }}
+                            />
+                        </HStack>
+                    </Stack>
+
+                    <Box flex="1.2" position="relative" h={{ base: '400px', md: '620px' }} w="full">
+                        <AnimatePresence initial={false} custom={direction}>
+                            <MotionBox
+                                key={currentIndex}
+                                custom={direction}
+                                position="absolute"
+                                w="full"
+                                h="full"
+                                initial={{ opacity: 0, scale: 0.9, rotateY: direction > 0 ? 15 : -15 }}
+                                animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                                exit={{ opacity: 0, scale: 1.1, rotateY: direction > 0 ? -15 : 15 }}
+                                transition={{
+                                    duration: 0.8,
+                                    ease: [0.16, 1, 0.3, 1]
+                                }}
+                                style={{ perspective: "1200px" }}
+                            >
+                                <Box
+                                    w="full"
+                                    h="full"
+                                    borderRadius="40px"
+                                    overflow="hidden"
+                                    boxShadow="0 50px 100px -20px rgba(0,0,0,0.7)"
+                                    position="relative"
+                                >
+                                    <Image
+                                        src={activeItem.image}
+                                        alt={activeItem.title}
+                                        w="100%"
+                                        h="100%"
+                                        objectFit="cover"
+                                    />
+                                    <Box
+                                        position="absolute"
+                                        inset="0"
+                                        bg="linear-gradient(to top, rgba(5,5,5,0.6) 0%, transparent 50%)"
+                                    />
+                                </Box>
+                            </MotionBox>
+                        </AnimatePresence>
+                    </Box>
+                </Flex>
+            </Container>
         </Box>
     );
 }
