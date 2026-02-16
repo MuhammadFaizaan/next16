@@ -12,14 +12,12 @@ export default function BackToTopButton() {
   const [scrollProgress, setScrollProgress] = useState(0);
 
   const handleScroll = () => {
-    // Show/Hide logic
     if (window.scrollY > 300) {
       setIsVisible(true);
     } else {
       setIsVisible(false);
     }
 
-    // Progress logic
     const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
     const progress = (window.scrollY / totalHeight) * 100;
     setScrollProgress(progress);
@@ -53,8 +51,8 @@ export default function BackToTopButton() {
           cursor="pointer"
           onClick={scrollToTop}
         >
+          {/* @ts-ignore */}
           <Box position="relative" size="60px">
-            {/* SVG Progress Ring */}
             <svg width="60" height="60" viewBox="0 0 60 60">
               <circle
                 cx="30"
@@ -68,7 +66,7 @@ export default function BackToTopButton() {
                 cx="30"
                 cy="30"
                 r="28"
-                stroke="#DC2626" // Your Theme Red
+                stroke="#DC2626" 
                 strokeWidth="2"
                 strokeDasharray="176"
                 strokeDashoffset={176 - (176 * scrollProgress) / 100}
@@ -78,7 +76,6 @@ export default function BackToTopButton() {
               />
             </svg>
 
-            {/* Icon Overlay */}
             <Circle
               position="absolute"
               top="50%"
