@@ -1,17 +1,28 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { FaArrowUp } from 'react-icons/fa';
+import { Icon, Box, Circle, Text } from '@chakra-ui/react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FiArrowUp } from 'react-icons/fi';
+
+const MotionBox = motion(Box);
 
 export default function BackToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
-  const toggleVisibility = () => {
+  const handleScroll = () => {
+    // Show/Hide logic
     if (window.scrollY > 300) {
       setIsVisible(true);
     } else {
       setIsVisible(false);
     }
+
+    // Progress logic
+    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = (window.scrollY / totalHeight) * 100;
+    setScrollProgress(progress);
   };
 
   const scrollToTop = () => {
@@ -22,23 +33,70 @@ export default function BackToTopButton() {
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', toggleVisibility);
-    return () => {
-      window.removeEventListener('scroll', toggleVisibility);
-    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <>
+    <AnimatePresence>
       {isVisible && (
-        <button
+        <MotionBox
+          initial={{ opacity: 0, scale: 0.5, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.5, y: 20 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          position="fixed"
+          bottom="40px"
+          right="40px"
+          zIndex={100}
+          cursor="pointer"
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 bg-blue-600 hover:bg-blue-700 text-white rounded-full p-3 shadow-lg transition-all duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          aria-label="Back to top"
         >
-          <FaArrowUp size={20} />
-        </button>
+          <Box position="relative" size="60px">
+            {/* SVG Progress Ring */}
+            <svg width="60" height="60" viewBox="0 0 60 60">
+              <circle
+                cx="30"
+                cy="30"
+                r="28"
+                stroke="rgba(255, 255, 255, 0.1)"
+                strokeWidth="2"
+                fill="none"
+              />
+              <motion.circle
+                cx="30"
+                cy="30"
+                r="28"
+                stroke="#DC2626" // Your Theme Red
+                strokeWidth="2"
+                strokeDasharray="176"
+                strokeDashoffset={176 - (176 * scrollProgress) / 100}
+                strokeLinecap="round"
+                fill="none"
+                style={{ transform: 'rotate(-90deg)', transformOrigin: '50% 50%' }}
+              />
+            </svg>
+
+            {/* Icon Overlay */}
+            <Circle
+              position="absolute"
+              top="50%"
+              left="50%"
+              transform="translate(-50%, -50%)"
+              size="44px"
+              bg="black"
+              color="white"
+              border="1px solid"
+              borderColor="whiteAlpha.200"
+              transition="all 0.3s ease"
+              _hover={{ color: "#DC2626", borderColor: "#DC2626" }}
+            >
+              <Icon as={FiArrowUp} boxSize={5} />
+            </Circle>
+          </Box>
+        </MotionBox>
       )}
-    </>
+    </AnimatePresence>
   );
 }

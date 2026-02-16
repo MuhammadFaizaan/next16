@@ -9,6 +9,7 @@ import TechnologyWeUse from "./components/Homepage/TechnologyWeUse";
 import HomeCTA from "./components/Homepage/HomeCTA";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import IndustrySlider from "./components/Homepage/Industries";
 
 export const metadata: Metadata = {
   title: "AI & Blockchain Engineering Company | NextChainX",
@@ -37,6 +38,7 @@ export default async function Home() {
         <PortfolioSlider />
         <TechnologyWeUse />
         <HomeCTA />
+        <IndustrySlider />
       </main>
       <Footer />
     </>

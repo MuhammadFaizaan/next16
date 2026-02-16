@@ -1,128 +1,138 @@
 'use client';
 
-import { Box, Container, Heading, Text, Button, VStack } from '@chakra-ui/react';
+import {
+    Box,
+    Container,
+    Heading,
+    Text,
+    Button,
+    Flex,
+    VStack,
+    HStack,
+    Icon,
+    Circle
+} from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { FiArrowRight, FiZap } from 'react-icons/fi';
+import { FiArrowRight, FiPlus } from 'react-icons/fi';
 
 const MotionBox = motion(Box);
 
 export default function HomeCTA() {
     return (
         <Box
+            as="section"
             bg="black"
-            py={{ base: 24, md: 32 }}
+            py={{ base: 20 }}
             position="relative"
             overflow="hidden"
         >
             <Box
                 position="absolute"
-                top="50%"
-                left="50%"
-                transform="translate(-50%, -50%)"
-                w={{ base: "300px", md: "600px" }}
-                h={{ base: "300px", md: "600px" }}
+                top="0"
+                right="0"
+                w={{ base: "full", md: "30%" }}
+                h="full"
                 bg="red.600"
-                filter="blur(150px)"
-                borderRadius="full"
-                opacity={0.15}
+                opacity={0.03}
                 zIndex={0}
             />
 
-            <Container maxW="1200px" position="relative" zIndex={1}>
-                <Box
-                    bgGradient="linear(to-br, whiteAlpha.100, whiteAlpha.50)"
-                    borderRadius={{ base: "3xl", md: "50px" }}
-                    p={{ base: 10, md: 24 }}
-                    border="1px solid"
-                    borderColor="whiteAlpha.200"
-                    backdropFilter="blur(20px)"
-                    position="relative"
-                    overflow="hidden"
+            <Container maxW="1400px" position="relative" zIndex={1}>
+                <Flex
+                    direction={{ base: 'column', lg: 'row' }}
+                    align="flex-start"
+                    justify="space-between"
+                    gap={{ base: 12, lg: 24 }}
                 >
-                    <Box
-                        position="absolute"
-                        inset={0}
-                        opacity={0.05}
-                        backgroundImage="radial-gradient(circle, white 1px, transparent 1px)"
-                        backgroundSize="30px 30px"
-                    />
+                    <VStack align="flex-start" spacing={0} flex="1">
+                        <HStack spacing={4} mb={8}>
+                            <Icon as={FiPlus} color="red.600" boxSize={6} />
+                            <Text color="red.600" fontWeight="bold" letterSpacing="widest" fontSize="xs">
+                                NEXT STEPS
+                            </Text>
+                        </HStack>
 
-                    <VStack spacing={10} align="center" textAlign="center">
-                        <MotionBox
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5 }}
+                        <Heading
+                            as="h2"
+                            fontSize={{ base: "5xl", md: "8xl", xl: "9xl" }}
+                            fontWeight="900"
+                            color="white"
+                            lineHeight="0.85"
+                            letterSpacing="-0.06em"
                         >
-
-                            <Text
-                                color="red.500"
-                                fontWeight="bold"
-                                fontSize="sm"
-                                letterSpacing="0.2em"
-                                textTransform="uppercase"
-                                mb={4}
-                            >
-                                Ready to scale?
+                            TALK IS <br />
+                            <Text as="span" color="transparent" style={{ WebkitTextStroke: '2px rgba(255,255,255,0.3)' }}>
+                                CHEAP.
                             </Text>
+                        </Heading>
+                    </VStack>
 
-                            <Heading
-                                as="h2"
-                                fontSize={{ base: "3xl", md: "5xl", lg: "7xl" }}
-                                fontWeight="900"
-                                color="white"
-                                lineHeight="1.1"
-                                mb={6}
-                                letterSpacing="-0.02em"
-                            >
-                                Let's build the <br />
-                                <Box as="span" color="red.600">next big thing</Box> together.
-                            </Heading>
+                    <VStack
+                        align="flex-start"
+                        spacing={10}
+                        maxW={{ base: "full", lg: "450px" }}
+                        pt={{ base: 0, lg: 12 }}
+                    >
+                        <Box h="2px" w="100px" bg="red.600" />
 
-                            <Text
-                                fontSize={{ base: "md", md: "xl" }}
-                                color="whiteAlpha.700"
-                                maxW="600px"
-                                mx="auto"
-                                mb={10}
-                            >
-                                Join hundreds of successful companies already building the future with NextChainX.
-                                Our experts are ready to turn your vision into reality.
-                            </Text>
-                        </MotionBox>
+                        <Text fontSize="2xl" color="white" fontWeight="400" lineHeight="1.4">
+                            We bridge the gap between <Text as="span" fontWeight="bold">visionary ideas</Text> and technical reality.
+                        </Text>
+
+                        <Text fontSize="md" color="whiteAlpha.600" lineHeight="1.7">
+                            Ready to move past the brainstorming phase? Our team is currently accepting
+                            projects for the Q3/Q4 2026 cycle. Let&apos;s see if we&apos;re a fit.
+                        </Text>
 
                         <MotionBox
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: 0.3 }}
+                            whileHover={{ x: 10 }}
+                            transition={{ duration: 0.3 }}
                         >
                             <Link href="/contact">
                                 <Button
                                     size="lg"
-                                    h="70px"
-                                    px={12}
-                                    bg="red.600"
+                                    variant="unstyled"
+                                    display="flex"
+                                    alignItems="center"
+                                    gap={6}
                                     color="white"
-                                    fontSize="lg"
-                                    fontWeight="bold"
-                                    borderRadius="full"
-                                    rightIcon={<FiArrowRight />}
-                                    _hover={{
-                                        bg: "red.500",
-                                        transform: "translateY(-4px)",
-                                        boxShadow: "0 20px 40px rgba(220, 38, 38, 0.4)"
-                                    }}
-                                    transition="all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)"
+                                    _hover={{ color: "red.500" }}
                                 >
-                                    Start Your Journey
+                                    <Circle
+                                        size="80px"
+                                        border="1px solid"
+                                        borderColor="whiteAlpha.400"
+                                        _groupHover={{ borderColor: "red.500" }}
+                                    >
+                                        <Icon as={FiArrowRight} boxSize={8} />
+                                    </Circle>
+                                    <VStack align="flex-start" spacing={0}>
+                                        <Text fontSize="xl" fontWeight="700">LET&apos;S CONNECT</Text>
+                                        <Text fontSize="xs" color="whiteAlpha.500">Response within 24hrs</Text>
+                                    </VStack>
                                 </Button>
                             </Link>
                         </MotionBox>
                     </VStack>
-                </Box>
+                </Flex>
+
+                <Box
+                    mt={24}
+                    h="1px"
+                    w="full"
+                    bgGradient="linear(to-r, red.600, transparent)"
+                    opacity={0.3}
+                />
             </Container>
+
+            <Box
+                position="absolute"
+                inset={0}
+                pointerEvents="none"
+                opacity={0.02}
+                backgroundImage="url('https://www.transparenttextures.com/patterns/asfalt-dark.png')"
+            />
         </Box>
     );
 }
