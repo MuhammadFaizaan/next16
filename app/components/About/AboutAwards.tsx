@@ -1,5 +1,4 @@
 'use client';
-
 import { Box, Container, Heading, Text, SimpleGrid, Stack, Image, useColorModeValue } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 
