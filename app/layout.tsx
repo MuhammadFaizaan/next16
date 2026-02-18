@@ -20,28 +20,52 @@ const bricolage = Bricolage_Grotesque({
 });
 
 export const metadata: Metadata = {
-  title: "AI & Blockchain Engineering Company | NextChainX",
+  metadataBase: new URL("https://www.nextchainx.io"),
+  title: {
+    default: "AI & Blockchain Engineering Company | NextChainX",
+    template: "%s | NextChainX",
+  },
   description: "NextChainX builds AI systems, blockchain platforms, and scalable digital products. From MVPs to enterprise solutions across global markets.",
-  keywords: "NextChainX, AI engineering, blockchain development, AI systems, blockchain platforms, digital products, MVP development, enterprise solutions, smart contracts, DeFi, tokenization",
+  keywords: ["NextChainX", "AI engineering", "blockchain development", "AI systems", "blockchain platforms", "digital products", "MVP development", "enterprise solutions", "smart contracts", "DeFi", "tokenization"],
   authors: [{ name: "NextChainX" }],
-  robots: "index, follow",
+  creator: "NextChainX",
+  publisher: "NextChainX",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
     title: "AI & Blockchain Engineering Company | NextChainX",
     description: "NextChainX builds AI systems, blockchain platforms, and scalable digital products. From MVPs to enterprise solutions across global markets.",
     type: "website",
     url: "https://www.nextchainx.io/",
     siteName: "NextChainX",
-    images: [{ url: "https://www.nextchainx.io/images/seo_image.jpg" }],
+    images: [{
+      url: "/images/seo_image.jpg",
+      width: 1200,
+      height: 630,
+      alt: "NextChainX AI & Blockchain Engineering"
+    }],
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
     title: "AI & Blockchain Engineering Company | NextChainX",
     description: "NextChainX builds AI systems, blockchain platforms, and scalable digital products. From MVPs to enterprise solutions across global markets.",
-    images: ["https://www.nextchainx.io/images/seo_image.jpg"],
+    images: ["/images/seo_image.jpg"],
+    creator: "@nextchainx",
   },
   alternates: {
-    canonical: "https://www.nextchainx.io/",
+    canonical: "/",
   },
+  category: "technology",
 };
 
 export default function RootLayout({
@@ -49,8 +73,28 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "NextChainX",
+    "url": "https://www.nextchainx.io",
+    "logo": "https://www.nextchainx.io/favicon.ico",
+    "description": "NextChainX builds AI systems, blockchain platforms, and scalable digital products.",
+    "sameAs": [
+      "https://twitter.com/nextchainx",
+      "https://linkedin.com/company/nextchainx",
+      "https://github.com/nextchainx"
+    ]
+  };
+
   return (
     <html lang="en" className={`${sora.variable} ${bricolage.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={`${sora.className} antialiased`}
       >

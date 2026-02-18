@@ -18,16 +18,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
 
     return {
-        title: `${project.title} | AI & Blockchain Case Study | NextChainX`,
+        title: `${project.title} | Case Study`,
         description: project.description,
         openGraph: {
-            title: `${project.title} | AI & Blockchain Case Study | NextChainX`,
+            title: `${project.title} | AI & Blockchain Case Study`,
             description: project.description,
-            url: `https://www.nextchainx.io/work/${slug}`,
+            url: `/work/${slug}`,
             images: [{ url: project.thumbnail }],
         },
         alternates: {
-            canonical: `https://www.nextchainx.io/work/${slug}`,
+            canonical: `/work/${slug}`,
         },
     };
 }

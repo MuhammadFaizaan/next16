@@ -14,15 +14,20 @@ import IndustrySlider from "./components/Homepage/Industries";
 export const metadata: Metadata = {
   title: "AI & Blockchain Engineering Company | NextChainX",
   description: "NextChainX builds AI systems, blockchain platforms, and scalable digital products. From MVPs to enterprise solutions across global markets.",
-  keywords: "NextChainX, AI engineering, blockchain development, AI systems, blockchain platforms, digital products, MVP development, enterprise solutions, smart contracts, DeFi, tokenization",
+  keywords: ["NextChainX", "AI engineering", "blockchain development", "AI systems", "blockchain platforms", "digital products", "MVP development", "enterprise solutions", "smart contracts", "DeFi", "tokenization"],
   openGraph: {
     title: "AI & Blockchain Engineering Company | NextChainX",
     description: "NextChainX builds AI systems, blockchain platforms, and scalable digital products. From MVPs to enterprise solutions across global markets.",
-    url: "https://www.nextchainx.io/",
-    images: [{ url: "https://www.nextchainx.io/images/seo_image.jpg" }],
+    url: "/",
+    images: [{
+      url: "/images/seo_image.jpg",
+      width: 1200,
+      height: 630,
+      alt: "NextChainX AI & Blockchain Engineering"
+    }],
   },
   alternates: {
-    canonical: "https://www.nextchainx.io/",
+    canonical: "/",
   },
 };
 
