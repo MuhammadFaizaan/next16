@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import HeroSection from "./components/Homepage/HeroSection";
 import ServicesSection from "./components/Homepage/ServicesSection";
+import ServicesSection2 from "./components/ServiceSection/ServiceSection";
 import ProcessSection from "./components/Homepage/ProcessSection";
 import JourneySection from "./components/Homepage/JourneySection";
 import PortfolioSlider from "./components/Homepage/PortfolioSlider";
@@ -37,6 +38,7 @@ export default async function Home() {
       <Header />
       <main>
         <HeroSection />
+        <ServicesSection2 />
         <ServicesSection />
         <ProcessSection />
         <JourneySection />
