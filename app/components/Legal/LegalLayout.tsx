@@ -1,118 +1,86 @@
 'use client';
 
-import { Box, Container, Heading, Text, Stack, useColorModeValue, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Flex } from '@chakra-ui/react';
-import { motion } from 'framer-motion';
+import { Box, Container, Stack, useColorModeValue, Heading, Button, Text } from '@chakra-ui/react';
 import { ReactNode } from 'react';
+import PageHero from '../Common/PageHero';
+import Link from 'next/link';
 
-const MotionBox = motion(Box);
 
 interface LegalLayoutProps {
-    title: string;
-    lastUpdated: string;
-    children: ReactNode;
+  title: string;
+  lastUpdated: string;
+  children: ReactNode;
 }
 
 export default function LegalLayout({ title, lastUpdated, children }: LegalLayoutProps) {
-    const bgColor = useColorModeValue('white', '#050505');
-    const textColor = useColorModeValue('black', 'white');
-    const mutedColor = useColorModeValue('gray.600', 'whiteAlpha.600');
-    const borderColor = useColorModeValue('gray.100', 'whiteAlpha.100');
+  const bgColor = useColorModeValue('white', '#050505');
+  const textColor = useColorModeValue('black', 'white');
+  const mutedColor = useColorModeValue('gray.600', 'whiteAlpha.600');
+  const borderColor = useColorModeValue('gray.100', 'whiteAlpha.100');
 
-    return (
-        <Box bg={bgColor} minH="100vh" pb={24}>
-            {/* Hero Section */}
-            <Box
-                pt={{ base: "140px", md: "180px" }}
-                pb={{ base: 12, md: 24 }}
-                position="relative"
-                overflow="hidden"
-                bg={useColorModeValue('gray.50', 'whiteAlpha.50')}
-                borderBottom="1px solid"
-                borderColor={borderColor}
+  return (
+    <Box bg={bgColor} minH="100vh" pb={24}>
+      <PageHero
+        title={title}
+        subtitle={`Legal / ${title} / Last Updated: ${lastUpdated}`}
+        image="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2670&auto=format&fit=crop"
+        ctaText="GET IN TOUCH"
+        ctaHref="/contact"
+      />
+
+      <Container maxW="1440px" mt={-12}>
+        <Box
+          p={{ base: 8, md: 16 }}
+          bg={useColorModeValue('white', '#0a0a0a')}
+          className="legal-content"
+          position="relative"
+          zIndex={2}
+        >
+          <Stack spacing={8}>
+            {children}
+          </Stack>
+        </Box>
+      </Container>
+
+      {/* CTA Section */}
+      <Box py={24} bg="#050505" position="relative" overflow="hidden">
+        <Box
+          position="absolute"
+          top="50%"
+          left="50%"
+          transform="translate(-50%, -50%)"
+          w="150%"
+          h="150%"
+          bg="radial-gradient(circle, rgba(255,19,19,0.1) 0%, rgba(0,0,0,0) 60%)"
+          filter="blur(100px)"
+          zIndex="0"
+        />
+        <Container maxW="container.lg" textAlign="center" position="relative" zIndex="1">
+          <Heading as="h2" size="2xl" color="white" mb={8} fontWeight="900">
+            Need Legal Clarification?
+          </Heading>
+          <Text fontSize="xl" color="whiteAlpha.700" mb={12} maxW="2xl" mx="auto">
+            If you have questions regarding our terms, privacy practices, or compliance standards, our legal team is here to help.
+          </Text>
+          <Link href="/contact" passHref>
+            <Button
+              as="a"
+              size="lg"
+              bg="brand.red"
+              color="white"
+              px={12}
+              h={16}
+              fontSize="xl"
+              _hover={{ bg: 'red.600', transform: 'translateY(-2px)' }}
+              transition="all 0.3s"
             >
-                {/* Abstract background elements */}
-                <Box
-                    position="absolute"
-                    top="-10%"
-                    right="-5%"
-                    w="400px"
-                    h="400px"
-                    bg="red.600"
-                    opacity="0.05"
-                    filter="blur(100px)"
-                    borderRadius="full"
-                />
-                <Box
-                    position="absolute"
-                    bottom="-10%"
-                    left="-5%"
-                    w="300px"
-                    h="300px"
-                    bg="blue.600"
-                    opacity="0.05"
-                    filter="blur(80px)"
-                    borderRadius="full"
-                />
+              Contact Legal Dept
+            </Button>
+          </Link>
+        </Container>
+      </Box>
 
-                <Container maxW="1200px" position="relative" zIndex={1}>
-                    <Stack spacing={6}>
-                        <MotionBox
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6 }}
-                        >
-                            <Breadcrumb fontSize="sm" color={mutedColor} mb={6}>
-                                <BreadcrumbItem>
-                                    <BreadcrumbLink href="/">Home</BreadcrumbLink>
-                                </BreadcrumbItem>
-                                <BreadcrumbItem isCurrentPage>
-                                    <BreadcrumbLink href="#" fontWeight="600" color="red.600">{title}</BreadcrumbLink>
-                                </BreadcrumbItem>
-                            </Breadcrumb>
-
-                            <Heading
-                                as="h1"
-                                fontSize={{ base: "4xl", md: "7xl" }}
-                                fontWeight="800"
-                                color={textColor}
-                                letterSpacing="-0.04em"
-                                lineHeight="1"
-                                mb={8}
-                            >
-                                {title}
-                            </Heading>
-
-                            <Flex align="center" gap={4}>
-                                <Box w="24px" h="2px" bg="red.600" />
-                                <Text fontSize="sm" fontWeight="700" color={mutedColor} textTransform="uppercase" letterSpacing="0.2em">
-                                    Revision Date: {lastUpdated}
-                                </Text>
-                            </Flex>
-                        </MotionBox>
-                    </Stack>
-                </Container>
-            </Box>
-
-            <Container maxW="1200px" mt={-12}>
-                {/* Content Section */}
-                <Box
-                    p={{ base: 8, md: 16 }}
-                    bg={useColorModeValue('white', '#0a0a0a')}
-                    borderRadius="4xl"
-                    border="1px solid"
-                    borderColor={borderColor}
-                    className="legal-content"
-                    boxShadow="2xl"
-                    position="relative"
-                    zIndex={2}
-                >
-                    <Stack spacing={8}>
-                        {children}
-                    </Stack>
-                </Box>
-            </Container>
-
-            <style jsx global>{`
+      <style jsx global>{`
         .legal-content h2 {
           font-size: 1.875rem;
           font-weight: 700;
@@ -144,6 +112,6 @@ export default function LegalLayout({ title, lastUpdated, children }: LegalLayou
           margin-bottom: 0.5rem;
         }
       `}</style>
-        </Box>
-    );
+    </Box>
+  );
 }

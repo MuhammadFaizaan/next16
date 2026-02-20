@@ -12,12 +12,12 @@ const MotionBox = motion(Box);
 
 export default function WorkClient() {
     return (
-        <Box bg="black" minH="100vh">
+        <Box bg="white" minH="100vh">
             <Header />
             <main>
                 <WorkHero />
 
-                <Box py={{ base: 20, md: 32 }} bg="black">
+                <Box py={{ base: 20, md: 32 }} bg="white">
                     <Container maxW="1200px">
                         <VStack spacing={20} align="stretch">
                             {/* Section Header - Subtle */}
@@ -33,7 +33,7 @@ export default function WorkClient() {
                                         Featured Work
                                     </Text>
                                 </Flex>
-                                <Heading color="white" fontSize={{ base: "3xl", md: "5xl" }} fontWeight="800" letterSpacing="-0.02em">
+                                <Heading color="gray.800" fontSize={{ base: "3xl", md: "5xl" }} fontWeight="800" letterSpacing="-0.02em">
                                     Engineering solutions for <br />
                                     the <Text as="span" color="red.600">next generation</Text> of tech.
                                 </Heading>

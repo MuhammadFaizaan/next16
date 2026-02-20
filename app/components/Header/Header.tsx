@@ -168,7 +168,7 @@ const navLinks = [
   { name: 'Work', href: '/work' },
   { name: 'Career', href: '/careers' },
   { name: 'About', href: '/about' },
-  { name: 'Regions', href: '/region/pk', dropdown: 'regions' }
+  // { name: 'Regions', href: '/region/pk', dropdown: 'regions' }
 ];
 
 const Header = () => {

@@ -18,12 +18,20 @@ export const metadata: Metadata = {
   },
 };
 
+import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
+import { Box } from "@chakra-ui/react";
+
 export default function FAQPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-white to-gray-50">
-      <HeroSection />
-      <FAQSection />
-      <CTASection />
-    </main>
+    <>
+      <Header />
+      <Box as="main" bg="white" minH="100vh">
+        <HeroSection />
+        <FAQSection />
+        <CTASection />
+      </Box>
+      <Footer />
+    </>
   );
 }

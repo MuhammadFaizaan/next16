@@ -6,6 +6,7 @@ import Footer from '@/app/components/Footer/Footer';
 import Link from 'next/link';
 import { BsArrowLeft, BsCheckCircleFill, BsArrowRight } from 'react-icons/bs';
 import type { Metadata } from 'next';
+import PageHero from '@/app/components/Common/PageHero';
 
 interface PageProps {
     params: Promise<{
@@ -62,88 +63,14 @@ export default async function ServiceDetailsPage({ params }: PageProps) {
     return (
         <>
             <Header />
-            <Box as="main" bg="black" minH="100vh">
-                {/* Immersive Hero Section */}
-                <Box
-                    position="relative"
-                    h={{ base: "70vh", md: "80vh" }}
-                    display="flex"
-                    alignItems="center"
-                    overflow="hidden"
-                >
-                    {/* Background Image with Parallax-like fixed attachment could be added, but simple cover is cleaner for now */}
-                    <Box
-                        position="absolute"
-                        inset="0"
-                        zIndex="0"
-                    >
-                        <Box
-                            as="img"
-                            src={serviceData.image}
-                            alt={serviceData.title}
-                            w="100%"
-                            h="100%"
-                            objectFit="cover"
-                            filter="brightness(0.35) contrast(1.1)"
-                            transform="scale(1.05)" // Subtle zoom
-                        />
-                        {/* Gradient Overlays for Readability */}
-                        <Box
-                            position="absolute"
-                            inset="0"
-                            bgGradient="linear(to-r, blackAlpha.800 0%, transparent 100%)"
-                        />
-                        <Box
-                            position="absolute"
-                            bottom="0"
-                            left="0"
-                            right="0"
-                            h="30%"
-                            bgGradient="linear(to-t, black 0%, transparent 100%)"
-                        />
-                    </Box>
-
-                    <Container maxW="1400px" position="relative" zIndex="1" pt={20}>
-                        <Link href={`/services/${categoryData.slug}`}>
-                            <Flex
-                                align="center"
-                                color="whiteAlpha.700"
-                                mb={8}
-                                _hover={{ color: "brand.red" }}
-                                transition="color 0.2s"
-                                width="fit-content"
-                            >
-                                <Box as="span" mr={2} display="inline-flex" alignItems="center">
-                                    <BsArrowLeft />
-                                </Box>
-                                <Text fontWeight="medium" letterSpacing="wide">Back to {categoryData.title}</Text>
-                            </Flex>
-                        </Link>
-
-                        <Box maxW="5xl">
-                            <Heading
-                                as="h1"
-                                fontSize={{ base: '5xl', md: '7xl', lg: '8xl' }}
-                                fontWeight="800"
-                                color="white"
-                                mb={8}
-                                lineHeight="0.95"
-                                letterSpacing="tight"
-                            >
-                                {serviceData.title}
-                            </Heading>
-                            <Text
-                                fontSize={{ base: 'xl', md: '3xl' }}
-                                color="whiteAlpha.900"
-                                maxW="3xl"
-                                fontWeight="300"
-                                lineHeight="1.4"
-                            >
-                                {serviceData.shortDescription}
-                            </Text>
-                        </Box>
-                    </Container>
-                </Box>
+            <Box as="main" bg="white" minH="100vh">
+                <PageHero
+                    title={serviceData.title}
+                    subtitle={`${categoryData.title} / ${serviceData.title}`}
+                    image={serviceData.image}
+                    ctaText="GET IN TOUCH"
+                    ctaHref="/contact"
+                />
 
                 {/* Content Section */}
                 <Container maxW="1400px" py={24}>
@@ -160,10 +87,10 @@ export default async function ServiceDetailsPage({ params }: PageProps) {
                                 >
                                     Overview
                                 </Text>
-                                <Heading as="h2" size="2xl" mb={8} color="white" fontWeight="700">
+                                <Heading as="h2" size="2xl" mb={8} color="gray.800" fontWeight="700">
                                     Comprehensive Solutions
                                 </Heading>
-                                <Text fontSize="xl" color="whiteAlpha.800" lineHeight="1.8" whiteSpace="pre-line">
+                                <Text fontSize="xl" color="gray.600" lineHeight="1.8" whiteSpace="pre-line">
                                     {serviceData.fullDescription}
                                 </Text>
                             </Box>
@@ -178,7 +105,7 @@ export default async function ServiceDetailsPage({ params }: PageProps) {
                                 >
                                     Key Features
                                 </Text>
-                                <Heading as="h3" size="xl" mb={10} color="white">
+                                <Heading as="h3" size="xl" mb={10} color="gray.800">
                                     What You Get
                                 </Heading>
                                 <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6}>
@@ -186,13 +113,13 @@ export default async function ServiceDetailsPage({ params }: PageProps) {
                                         <Flex
                                             key={idx}
                                             align="center"
-                                            bg="whiteAlpha.50"
+                                            bg="gray.50"
                                             p={6}
                                             borderRadius="xl"
                                             border="1px solid"
-                                            borderColor="whiteAlpha.100"
+                                            borderColor="gray.100"
                                             transition="all 0.3s"
-                                            _hover={{ bg: "whiteAlpha.100", borderColor: "brand.red" }}
+                                            _hover={{ bg: "white", borderColor: "brand.red", shadow: "lg" }}
                                         >
                                             <Box
                                                 color="brand.red"
@@ -210,7 +137,7 @@ export default async function ServiceDetailsPage({ params }: PageProps) {
                                                     <BsCheckCircleFill style={{ width: '100%', height: '100%' }} />
                                                 </Box>
                                             </Box>
-                                            <Text color="white" fontWeight="semibold" fontSize="lg">{feature}</Text>
+                                            <Text color="gray.800" fontWeight="semibold" fontSize="lg">{feature}</Text>
                                         </Flex>
                                     ))}
                                 </SimpleGrid>
@@ -220,19 +147,19 @@ export default async function ServiceDetailsPage({ params }: PageProps) {
                         {/* Right: Sidebar / CTA */}
                         <Box gridColumn={{ lg: "span 4" }}>
                             <Box
-                                bg="dark.400"
+                                bg="gray.50"
                                 p={10}
                                 borderRadius="3xl"
                                 border="1px solid"
-                                borderColor="whiteAlpha.200"
+                                borderColor="gray.200"
                                 position="sticky"
                                 top="120px"
-                                boxShadow="0 20px 40px -10px rgba(0,0,0,0.3)"
+                                boxShadow="0 20px 40px -10px rgba(0,0,0,0.05)"
                             >
-                                <Heading as="h4" size="lg" mb={6} color="white">
+                                <Heading as="h4" size="lg" mb={6} color="gray.800">
                                     Ready to Transform your Business?
                                 </Heading>
-                                <Text color="whiteAlpha.700" mb={10} fontSize="lg">
+                                <Text color="gray.600" mb={10} fontSize="lg">
                                     Let's discuss how we can help you achieve your goals with our expert {serviceData.title} services.
                                 </Text>
                                 <Button
@@ -253,9 +180,9 @@ export default async function ServiceDetailsPage({ params }: PageProps) {
                                     size="lg"
                                     w="full"
                                     variant="outline"
-                                    color="white"
-                                    borderColor="whiteAlpha.300"
-                                    _hover={{ bg: "whiteAlpha.100" }}
+                                    color="gray.800"
+                                    borderColor="gray.300"
+                                    _hover={{ bg: "gray.50" }}
                                     h={14}
                                     fontSize="lg"
                                 >

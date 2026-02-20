@@ -1,170 +1,187 @@
 'use client';
 
-import { Box, Container, Heading, SimpleGrid, Text, Flex, Button, Icon } from '@chakra-ui/react';
+import PageHero from '@/app/components/Common/PageHero';
+import {
+    Box, Container, Heading, SimpleGrid, Text,
+    Flex, Button, Icon, VStack, HStack,
+    Grid, GridItem, Badge, Image
+} from '@chakra-ui/react';
 import Header from '@/app/components/Header/Header';
 import Footer from '@/app/components/Footer/Footer';
 import Link from 'next/link';
 import { BsArrowRight } from 'react-icons/bs';
+import { FiArrowUpRight, FiLayers, FiActivity, FiGlobe } from 'react-icons/fi';
 import * as FaIcons from 'react-icons/fa';
 import { industriesData } from '@/app/lib/industriesData';
+import { motion } from 'framer-motion';
 
 export default function IndustryListClient() {
     return (
         <>
             <Header />
-            <Box as="main" bg="black" minH="100vh">
-                {/* Hero Section */}
-                <Box
-                    position="relative"
-                    h="60vh"
-                    minH="500px"
-                    display="flex"
-                    alignItems="center"
-                    overflow="hidden"
-                >
-                    {/* Abstract Background */}
-                    <Box position="absolute" inset="0" zIndex="0">
-                        <Box
-                            position="absolute"
-                            top="-50%"
-                            right="-20%"
-                            w="80%"
-                            h="200%"
-                            bg="radial-gradient(circle, rgba(255, 19, 19, 0.15) 0%, rgba(0,0,0,0) 70%)"
-                            filter="blur(60px)"
-                        />
-                        <Box
-                            position="absolute"
-                            bottom="-20%"
-                            left="-10%"
-                            w="60%"
-                            h="150%"
-                            bg="radial-gradient(circle, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0) 60%)"
-                            filter="blur(80px)"
-                        />
-                    </Box>
+            <Box as="main" bg="white" minH="100vh">
+                <PageHero
+                    title="Expertise Across Every Domain"
+                    subtitle="Revolutionizing Industries through Engineering Excellence"
+                    image="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2670&auto=format&fit=crop"
+                    ctaText="GET IN TOUCH"
+                    ctaHref="/contact"
+                />
 
-                    <Container maxW="1400px" position="relative" zIndex="1">
-                        <Text
-                            color="brand.red"
-                            fontWeight="bold"
-                            letterSpacing="widest"
-                            textTransform="uppercase"
-                            mb={4}
-                            fontSize="sm"
-                        >
-                            Industries We Serve
-                        </Text>
-                        <Heading
-                            as="h1"
-                            fontSize={{ base: '5xl', md: '7xl', lg: '8xl' }}
-                            fontWeight="800"
-                            color="white"
-                            mb={6}
-                            lineHeight="1"
-                            letterSpacing="tight"
-                        >
-                            Transforming <br />
-                            <Box as="span" color="brand.red">Every Sector</Box>
-                        </Heading>
-                        <Text
-                            fontSize={{ base: 'xl', md: '2xl' }}
-                            color="whiteAlpha.700"
-                            maxW="3xl"
-                            lineHeight="1.6"
-                        >
-                            We bring digital innovation to diverse industries, tailoring our solutions to meet unique challenges and unlock new opportunities for growth.
-                        </Text>
+                {/* Section Header */}
+                <Box py={{ base: 20, md: 32 }} bg="white">
+                    <Container maxW="1200px">
+                        <VStack spacing={8} textAlign="center" mb={20}>
+                            <HStack spacing={4}>
+                                <Box w="20px" h="2px" bg="red.600" />
+                                <Text fontWeight="900" letterSpacing="0.2em" color="red.600" textTransform="uppercase" fontSize="xs">
+                                    Our Focus Areas
+                                </Text>
+                                <Box w="20px" h="2px" bg="red.600" />
+                            </HStack>
+                            <Heading fontSize={{ base: "4xl", md: "6xl" }} fontWeight="900" letterSpacing="-0.03em" lineHeight="1">
+                                High-complexity sectors <br />
+                                <Text as="span" color="red.600">met with precision.</Text>
+                            </Heading>
+                            <Text fontSize="xl" color="gray.600" maxW="800px" lineHeight="1.8">
+                                We help enterprises and high-growth startups navigate their industry's most critical technical hurdles with scalable, future-proof architectures.
+                            </Text>
+                        </VStack>
+
+                        {/* Industries Grid */}
+                        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={12}>
+                            {industriesData.map((industry, index) => {
+                                const IconComponent = (FaIcons as any)[industry.icon] || FaIcons.FaIndustry;
+
+                                return (
+                                    <motion.div
+                                        key={industry.id}
+                                        initial={{ opacity: 0, y: 30 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.6, delay: index * 0.1 }}
+                                    >
+                                        <Link href={`/industries/${industry.slug}`}>
+                                            <Box
+                                                role="group"
+                                                bg="gray.50"
+                                                p={10}
+                                                borderRadius="4xl"
+                                                h="100%"
+                                                transition="all 0.5s cubic-bezier(0.4, 0, 0.2, 1)"
+                                                position="relative"
+                                                overflow="hidden"
+                                                border="1px solid"
+                                                borderColor="gray.100"
+                                                _hover={{
+                                                    bg: "white",
+                                                    shadow: "2xl",
+                                                    transform: "translateY(-12px)",
+                                                    borderColor: "red.500"
+                                                }}
+                                            >
+                                                {/* Icon and Title */}
+                                                <VStack align="flex-start" spacing={8} h="100%">
+                                                    <Flex
+                                                        boxSize={16}
+                                                        bg="red.600"
+                                                        color="white"
+                                                        borderRadius="2xl"
+                                                        align="center"
+                                                        justify="center"
+                                                        transition="all 0.3s"
+                                                        _groupHover={{ transform: "rotate(10deg) scale(1.1)" }}
+                                                    >
+                                                        <Icon as={IconComponent} boxSize={8} />
+                                                    </Flex>
+
+                                                    <Box flex="1">
+                                                        <Heading as="h3" fontSize="2xl" fontWeight="900" mb={4} color="gray.800" letterSpacing="-0.02em">
+                                                            {industry.title}
+                                                        </Heading>
+                                                        <Text color="gray.600" fontSize="md" lineHeight="1.7" mb={8}>
+                                                            {industry.shortDescription}
+                                                        </Text>
+                                                    </Box>
+
+                                                    <HStack color="red.600" fontWeight="900" fontSize="sm" letterSpacing="0.1em">
+                                                        <Text>EXPLORE SOLUTIONS</Text>
+                                                        <Icon as={FiArrowUpRight} boxSize={5} transition="transform 0.3s" _groupHover={{ transform: "translate(4px, -4px)" }} />
+                                                    </HStack>
+                                                </VStack>
+
+                                                {/* Subtle Background Text */}
+                                                <Box
+                                                    position="absolute"
+                                                    bottom="-20px"
+                                                    right="-20px"
+                                                    fontSize="140px"
+                                                    fontWeight="900"
+                                                    color="gray.100"
+                                                    zIndex={-1}
+                                                    opacity={0.5}
+                                                    userSelect="none"
+                                                >
+                                                    {index + 1}
+                                                </Box>
+                                            </Box>
+                                        </Link>
+                                    </motion.div>
+                                );
+                            })}
+                        </SimpleGrid>
                     </Container>
                 </Box>
 
-                {/* Industries Grid */}
-                <Container maxW="1400px" pb={32}>
-                    <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
-                        {industriesData.map((industry, index) => {
-                            // Dynamically get the icon component
-                            // @ts-ignore
-                            const IconComponent = FaIcons[industry.icon] || FaIcons.FaIndustry;
-
-                            return (
-                                <Box
-                                    key={industry.id}
-                                    bg="whiteAlpha.50"
-                                    border="1px solid"
-                                    borderColor="whiteAlpha.100"
-                                    borderRadius="2xl"
-                                    overflow="hidden"
-                                    transition="all 0.3s ease"
-                                    _hover={{
-                                        borderColor: 'brand.red',
-                                        transform: 'translateY(-8px)',
-                                        bg: 'whiteAlpha.100'
-                                    }}
-                                    position="relative"
-                                    display="flex"
-                                    flexDirection="column"
-                                >
-                                    <Box p={8} flex="1">
-                                        <Flex align="center" mb={6}>
-                                            <Box
-                                                p={3}
-                                                bg="brand.red"
-                                                color="white"
-                                                borderRadius="lg"
-                                                mr={4}
-                                            >
-                                                <Icon as={IconComponent} boxSize={6} />
-                                            </Box>
-                                            <Heading as="h3" size="md" color="white">
-                                                {industry.title}
-                                            </Heading>
-                                        </Flex>
-
-                                        <Text color="whiteAlpha.700" mb={6} lineHeight="1.6">
-                                            {industry.shortDescription}
-                                        </Text>
-
-                                        <Link href={`/industries/${industry.slug}`}>
-                                            <Flex
-                                                align="center"
-                                                color="brand.red"
-                                                fontWeight="bold"
-                                                _hover={{ color: 'red.400' }}
-                                            >
-                                                <Text mr={2}>Explore Solutions</Text>
-                                                <BsArrowRight />
-                                            </Flex>
-                                        </Link>
-                                    </Box>
-                                </Box>
-                            );
-                        })}
-                    </SimpleGrid>
-                </Container>
+                {/* Performance Banner */}
+                <Box py={24} bg="#050505" color="white">
+                    <Container maxW="1200px">
+                        <Grid templateColumns={{ base: "1fr", lg: "repeat(4, 1fr)" }} gap={12}>
+                            {[
+                                { label: "Success Rate", value: "99%", icon: FiActivity },
+                                { label: "Project Scale", value: "$4B+", icon: FiGlobe },
+                                { label: "Tech Experts", value: "150+", icon: FiLayers },
+                                { label: "Industry Awards", value: "12", icon: FiArrowUpRight },
+                            ].map((stat, idx) => (
+                                <VStack key={idx} align={{ base: "center", lg: "flex-start" }} spacing={4}>
+                                    <Icon as={stat.icon} color="red.600" boxSize={8} />
+                                    <Heading size="2xl" fontWeight="900">{stat.value}</Heading>
+                                    <Text color="whiteAlpha.600" fontWeight="700" letterSpacing="0.1em">{stat.label.toUpperCase()}</Text>
+                                </VStack>
+                            ))}
+                        </Grid>
+                    </Container>
+                </Box>
 
                 {/* CTA Section */}
-                <Box py={20} bg="gray.900" borderTop="1px solid" borderColor="whiteAlpha.100">
-                    <Container maxW="container.xl" textAlign="center">
-                        <Heading as="h2" size="2xl" color="white" mb={6}>
-                            Ready to Transform Your Industry?
-                        </Heading>
-                        <Text fontSize="xl" color="whiteAlpha.700" mb={10} maxW="2xl" mx="auto">
-                            Let's discuss how our technology can solve your specific industry challenges and drive your business forward.
-                        </Text>
-                        <Link href="/contact">
-                            <Button
-                                size="lg"
-                                bg="brand.red"
-                                color="white"
-                                px={10}
-                                h={14}
-                                fontSize="lg"
-                                _hover={{ bg: 'red.600' }}
-                                rightIcon={<BsArrowRight />}
-                            >
-                                Get in Touch
-                            </Button>
-                        </Link>
+                <Box py={32} bg="white">
+                    <Container maxW="container.lg" textAlign="center">
+                        <VStack spacing={10}>
+                            <Heading fontSize={{ base: "4xl", md: "6xl" }} fontWeight="900" letterSpacing="-0.04em">
+                                Deep Industry Knowledge. <br />
+                                <Text as="span" color="red.600">Pure Engineering Power.</Text>
+                            </Heading>
+                            <Text fontSize="xl" color="gray.600" maxW="2xl" mx="auto">
+                                Stop struggling with fragmented tech. Partner with an engineering team that understands the nuances of your business sector.
+                            </Text>
+                            <Link href="/contact">
+                                <Button
+                                    size="xl"
+                                    bg="red.600"
+                                    color="white"
+                                    px={14}
+                                    h={20}
+                                    fontSize="xl"
+                                    fontWeight="900"
+                                    borderRadius="2xl"
+                                    _hover={{ bg: "black", transform: "translateY(-5px)", shadow: "2xl" }}
+                                    transition="all 0.3s"
+                                    rightIcon={<BsArrowRight />}
+                                >
+                                    TALK TO AN EXPERT
+                                </Button>
+                            </Link>
+                        </VStack>
                     </Container>
                 </Box>
             </Box>

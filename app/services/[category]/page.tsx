@@ -6,6 +6,7 @@ import Footer from '@/app/components/Footer/Footer';
 import Link from 'next/link';
 import { BsArrowRight } from 'react-icons/bs';
 import type { Metadata } from 'next';
+import PageHero from '@/app/components/Common/PageHero';
 
 interface PageProps {
     params: Promise<{
@@ -55,70 +56,14 @@ export default async function CategoryPage({ params }: PageProps) {
     return (
         <>
             <Header />
-            <Box as="main" bg="black" minH="100vh">
-                {/* Professional Hero Section */}
-                <Box
-                    position="relative"
-                    h="50vh"
-                    minH="400px"
-                    display="flex"
-                    alignItems="center"
-                    overflow="hidden"
-                >
-                    {/* Abstract Background */}
-                    <Box position="absolute" inset="0" zIndex="0">
-                        <Box
-                            position="absolute"
-                            top="-50%"
-                            left="-20%"
-                            w="80%"
-                            h="200%"
-                            bg="radial-gradient(circle, rgba(255,19,19,0.15) 0%, rgba(0,0,0,0) 70%)"
-                            filter="blur(60px)"
-                        />
-                        <Box
-                            position="absolute"
-                            bottom="-20%"
-                            right="-10%"
-                            w="60%"
-                            h="150%"
-                            bg="radial-gradient(circle, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0) 60%)"
-                            filter="blur(80px)"
-                        />
-                    </Box>
-
-                    <Container maxW="1400px" position="relative" zIndex="1">
-                        <Text
-                            color="brand.red"
-                            fontWeight="bold"
-                            letterSpacing="widest"
-                            textTransform="uppercase"
-                            mb={4}
-                            fontSize="sm"
-                        >
-                            Services / {categoryData.title}
-                        </Text>
-                        <Heading
-                            as="h1"
-                            fontSize={{ base: '5xl', md: '7xl', lg: '8xl' }}
-                            fontWeight="800"
-                            color="white"
-                            mb={6}
-                            lineHeight="1"
-                            letterSpacing="tight"
-                        >
-                            {categoryData.title}
-                        </Heading>
-                        <Text
-                            fontSize={{ base: 'xl', md: '2xl' }}
-                            color="whiteAlpha.700"
-                            maxW="3xl"
-                            lineHeight="1.6"
-                        >
-                            {categoryData.description}
-                        </Text>
-                    </Container>
-                </Box>
+            <Box as="main" bg="white" minH="100vh">
+                <PageHero
+                    title={categoryData.title}
+                    subtitle={`Services / ${categoryData.title}`}
+                    image="https://images.unsplash.com/photo-1558494949-ef010cbdcc48?q=80&w=2626&auto=format&fit=crop"
+                    ctaText="GET IN TOUCH"
+                    ctaHref="/contact"
+                />
 
                 {/* Services Grid Section */}
                 <Container maxW="1400px" pb={32}>
@@ -126,16 +71,16 @@ export default async function CategoryPage({ params }: PageProps) {
                         {categoryData.services.map((service, index) => (
                             <Box
                                 key={service.id}
-                                bg="dark.400"
+                                bg="white"
                                 border="1px solid"
-                                borderColor="whiteAlpha.100"
+                                borderColor="gray.100"
                                 borderRadius="2xl"
                                 overflow="hidden"
                                 transition="all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)"
                                 _hover={{
                                     borderColor: 'brand.red',
                                     transform: 'translateY(-10px)',
-                                    boxShadow: '0 20px 40px -10px rgba(0,0,0,0.5)',
+                                    boxShadow: '0 20px 40px -10px rgba(0,0,0,0.1)',
                                 }}
                                 // @ts-ignore
                                 group="true"
@@ -148,7 +93,7 @@ export default async function CategoryPage({ params }: PageProps) {
                                     right={6}
                                     fontSize="8xl"
                                     fontWeight="900"
-                                    color="whiteAlpha.50"
+                                    color="gray.100" // Kept light on dark overlay
                                     lineHeight="1"
                                     zIndex="0"
                                 >
@@ -173,11 +118,11 @@ export default async function CategoryPage({ params }: PageProps) {
                                     />
                                 </Box>
 
-                                <Flex direction="column" p={8} position="relative" zIndex="1" mt="-50px" bg="linear-gradient(to top, #0A0A0A, transparent)">
-                                    <Heading as="h3" size="xl" color="white" mb={4}>
+                                <Flex direction="column" p={8} position="relative" zIndex={1} mt="-50px" bg="linear-gradient(to top, white 80%, transparent)">
+                                    <Heading as="h3" size="xl" color="gray.800" mb={4}>
                                         {service.title}
                                     </Heading>
-                                    <Text color="whiteAlpha.700" mb={8} fontSize="lg" lineHeight="1.6">
+                                    <Text color="gray.600" mb={8} fontSize="lg" lineHeight="1.6">
                                         {service.shortDescription}
                                     </Text>
 
@@ -187,7 +132,7 @@ export default async function CategoryPage({ params }: PageProps) {
                                                 as="span"
                                                 display="inline-flex"
                                                 alignItems="center"
-                                                color="white"
+                                                color="gray.800"
                                                 fontWeight="bold"
                                                 fontSize="lg"
                                                 _groupHover={{ color: 'brand.red' }}

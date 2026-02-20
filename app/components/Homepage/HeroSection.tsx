@@ -141,15 +141,10 @@ export default function HeroSection() {
                                     letterSpacing="-0.03em"
                                     textAlign={{ base: "center", md: "left" }}
                                 >
-                                    Your Trusted Custom Software Development
-                                    <br />
-                                    <Text as="span">
-                                        Company for Innovative Businesses
-                                    </Text>
+                                    Your Trusted Custom Software Partner for Innovative Businesses
                                 </Heading>
                             </motion.div>
 
-                            {/* Typing Effect */}
                             <motion.div
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
@@ -160,7 +155,7 @@ export default function HeroSection() {
                                     fontWeight="bold"
                                     color="#ef4444"
                                     textAlign={{ base: "center", md: "left" }}
-                                    minH="50px" // Reserve height to prevent layout shift
+                                    minH="50px"
                                 >
                                     <TypeAnimation
                                         sequence={[
@@ -188,7 +183,6 @@ export default function HeroSection() {
                             </motion.div>
                         </Stack>
 
-                        {/* CTA Buttons */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -216,10 +210,10 @@ export default function HeroSection() {
                                         bg="white"
                                         color="black"
                                         _hover={{
-                                            bg: "brand-red",
-                                            color: "red.500",
-                                            transform: "translateY(-2px)",
-                                            shadow: "0 10px 40px rgba(239, 68, 68, 0.4)"
+                                            bg: "red.500",
+                                            color: "white",
+                                            // transform: "translateY(-2px)",
+                                            // shadow: "0 10px 40px rgba(239, 68, 68, 0.4)"
                                         }}
                                         transition="all 0.3s"
                                         fontWeight="bold"
@@ -230,7 +224,7 @@ export default function HeroSection() {
                                             style={{
                                                 position: 'absolute',
                                                 inset: 0,
-                                                background: 'radial-gradient(circle, rgba(255,255,255,0.3), transparent)',
+                                                // background: 'radial-gradient(circle, rgba(255,255,255,0.3), transparent)',
                                                 opacity: 0
                                             }}
                                             whileHover={{ opacity: 1, scale: 2 }}
@@ -268,7 +262,6 @@ export default function HeroSection() {
                             </Flex>
                         </motion.div>
 
-                        {/* Stats */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -285,7 +278,7 @@ export default function HeroSection() {
                                 flexWrap="wrap"
                             >
                                 {[
-                                    { value: '200+', label: 'Projects' },
+                                    { value: '70+', label: 'Projects' },
                                     { value: '50+', label: 'Clients' },
                                     { value: '99%', label: 'Success Rate' }
                                 ].map((stat, index) => (

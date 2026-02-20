@@ -1,3 +1,5 @@
+'use client';
+
 import type { Metadata } from 'next';
 import { servicesData } from '@/app/lib/servicesData';
 import Header from '@/app/components/Header/Header';
@@ -7,19 +9,7 @@ import Link from 'next/link';
 import { BsArrowRight } from 'react-icons/bs';
 import * as Icons from 'react-icons/fi';
 import * as AiIcons from 'react-icons/ai';
-
-export const metadata: Metadata = {
-    title: "Our Services | AI, Blockchain & Digital Engineering Experts",
-    description: "Explore our comprehensive suite of services including Blockchain development, AI solutions, Web & Mobile engineering, and Rapid Prototyping.",
-    openGraph: {
-        title: "Our Services | AI, Blockchain & Digital Engineering Experts",
-        description: "Explore our comprehensive suite of services including Blockchain development, AI solutions, Web & Mobile engineering, and Rapid Prototyping.",
-        url: "/services",
-    },
-    alternates: {
-        canonical: "/services",
-    },
-};
+import PageHero from '@/app/components/Common/PageHero';
 
 const iconMap: any = { ...Icons, ...AiIcons };
 
@@ -27,15 +17,16 @@ export default function ServicesPage() {
     return (
         <>
             <Header />
-            <Box as="main" bg="black" py={32}>
-                <Container maxW="1400px">
-                    <Heading as="h1" color="white" fontSize={{ base: "4xl", md: "6xl" }} mb={8}>
-                        Our Expertise
-                    </Heading>
-                    <Text color="whiteAlpha.700" fontSize="xl" maxW="3xl" mb={16}>
-                        We build high-performance products at the intersection of decentralization and intelligence.
-                    </Text>
+            <Box as="main" bg="white">
+                <PageHero
+                    title="Our Expertise"
+                    subtitle="Services"
+                    image="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2672&auto=format&fit=crop"
+                    ctaText="GET IN TOUCH"
+                    ctaHref="/contact"
+                />
 
+                <Container maxW="1400px" py={32}>
                     <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
                         {servicesData.map((category) => {
                             const IconComponent = iconMap[category.icon] || Icons.FiBox;
@@ -43,21 +34,21 @@ export default function ServicesPage() {
                                 <Link key={category.id} href={`/services/${category.slug}`}>
                                     <Box
                                         p={8}
-                                        bg="whiteAlpha.50"
+                                        bg="gray.50"
                                         borderRadius="2xl"
                                         border="1px solid"
-                                        borderColor="whiteAlpha.100"
+                                        borderColor="gray.100"
                                         transition="all 0.3s"
-                                        _hover={{ borderColor: "brand.red", bg: "whiteAlpha.100", transform: "translateY(-5px)" }}
+                                        _hover={{ borderColor: "brand.red", bg: "white", transform: "translateY(-5px)", shadow: "xl" }}
                                         height="full"
                                     >
                                         <Box mb={6} color="brand.red">
                                             <IconComponent size={40} />
                                         </Box>
-                                        <Heading as="h2" color="white" size="lg" mb={4}>
+                                        <Heading as="h2" color="gray.800" size="lg" mb={4}>
                                             {category.title}
                                         </Heading>
-                                        <Text color="whiteAlpha.700" mb={8}>
+                                        <Text color="gray.600" mb={8}>
                                             {category.description}
                                         </Text>
                                         <Flex align="center" color="brand.red" fontWeight="bold">
