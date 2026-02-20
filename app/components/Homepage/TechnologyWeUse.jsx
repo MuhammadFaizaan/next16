@@ -10,7 +10,6 @@ import { IoMdCloudOutline } from 'react-icons/io';
 import { LuLink } from 'react-icons/lu';
 
 const MotionBox = motion(Box);
-const MotionFlex = motion(Flex);
 const MotionText = motion(Text);
 const MotionHeading = motion(Heading);
 
@@ -180,9 +179,6 @@ const TechnologyWeUse = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                 >
-                    <MotionText className='text-dark-300 text-[15px] lg:text-[20px]'>
-                        <span className='text-brand-red'>/</span> technology <span className='text-brand-red'>/</span>
-                    </MotionText>
                     <MotionHeading className='text-dark-300 !text-[28px] md:!text-[40px] xl:!text-[60px] md:max-w-[60%] font-sora tracking-tighter leading-tight'>
                         Technology We Use
                     </MotionHeading>
@@ -243,35 +239,12 @@ const TechnologyWeUse = () => {
                                             transition={{ duration: 0.3 }}
                                         />
                                     </svg>
-
-                                    {/* Icon in center */}
-                                    {/* <MotionText
-                                        position="absolute"
-                                        top="22%"
-                                        left="32%"
-                                        transform="translate(-45%, -45%)"
-                                        fontSize="24px"
-                                        animate={{ 
-                                            y: [0, -5, 0],
-                                            transition: {
-                                                repeat: activeTab === index ? Infinity : 0,
-                                                repeatDelay: 1.5,
-                                                duration: 1
-                                            }
-                                        }}
-                                    >
-                                        
-                                    </MotionText> */}
                                     {
                                         activeTab === index ?
                                             <Image src={category.icon_white} alt={category.name} width={8} height={8} className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2' />
                                             :
                                             <Image src={category.icon_black} alt={category.name} width={8} height={8} className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2' />
                                     }
-                                    {/* <span className={`absolute top-1/2 left-1/2 text-[1.5rem] -translate-x-1/2 -translate-y-1/2 ${activeTab === index ? 'text-white' : 'text-black'}`}>
-
-                                        {category.icon}
-                                    </span> */}
                                 </MotionBox>
 
                                 <MotionText
@@ -291,7 +264,6 @@ const TechnologyWeUse = () => {
                         ))}
                     </Flex>
 
-                    {/* Mobile tab navigation */}
                     <Box
                         display={{ base: "block", md: "none" }}
                         mb={10}
@@ -333,7 +305,6 @@ const TechnologyWeUse = () => {
                         </HStack>
                     </Box>
 
-                    {/* Active Tab Description */}
                     <MotionBox
                         textAlign="center"
                         mb={10}
@@ -357,7 +328,6 @@ const TechnologyWeUse = () => {
                         </AnimatePresence>
                     </MotionBox>
 
-                    {/* Technology Content */}
                     <MotionBox
                         animate={controls}
                         className="relative overflow-hidden rounded-2xl"
@@ -365,7 +335,6 @@ const TechnologyWeUse = () => {
                             boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
                         }}
                     >
-                        {/* Animated background pattern */}
                         <Box
                             className="absolute inset-0 z-0"
                             style={{
@@ -375,7 +344,6 @@ const TechnologyWeUse = () => {
                             }}
                         />
 
-                        {/* Content panels */}
                         <AnimatePresence mode="wait">
                             <MotionBox
                                 key={`content-${activeTab}`}
@@ -407,7 +375,6 @@ const TechnologyWeUse = () => {
                                                 overflow: "hidden"
                                             }}
                                         >
-                                            {/* Background circle */}
                                             <Box
                                                 position="absolute"
                                                 top="-20px"
