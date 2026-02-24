@@ -26,7 +26,7 @@ export default function FAQPage() {
   return (
     <>
       <Header />
-      <Box as="main" bg="white" minH="100vh">
+      <Box as="main" bg="white" >
         <HeroSection />
         <FAQSection />
         <CTASection />

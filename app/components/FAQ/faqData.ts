@@ -1,30 +1,77 @@
 // faqData.ts
 
-export interface FAQ {
+export interface FAQItem {
+  id: number;
   question: string;
   answer: string;
-  category: "General" | "Security" | "Billing" | "Technical";
+  category: string;
+  icon: string; // Using icon name string for dynamic rendering
 }
 
-export const faqs: FAQ[] = [
+export const faqCategories = [
+  'All',
+  'Getting Started',
+  'Services',
+  'Security',
+  'Technical',
+  'Billing'
+];
+
+export const faqData: FAQItem[] = [
   {
-    category: "General",
-    question: "How does the 14-day free trial work?",
-    answer: "You get full access to all our Premium features for 14 days. No credit card is required. At the end of the trial, you can choose a plan that fits your needs or stay on our Free tier."
+    id: 1,
+    question: 'How do I start a project with NextChainX?',
+    answer: 'Starting a project is simple. Contact us through our consultation form, and our solutions architects will reach out within 24 hours to schedule a discovery call to understand your requirements and objectives.',
+    category: 'Getting Started',
+    icon: 'FaRocket',
   },
   {
-    category: "Security",
-    question: "Is my data encrypted at rest?",
-    answer: "Yes, all data is encrypted using AES-256 encryption at rest and TLS 1.3 in transit. We perform annual SOC2 Type II audits to ensure your data remains safe."
+    id: 2,
+    question: 'What industries do you specialize in?',
+    answer: 'We have deep expertise in FinTech (High-frequency trading, DeFi), Healthcare (HIPAA-compliant systems), E-commerce (Scalable marketplaces), Real Estate, and Supply Chain management.',
+    category: 'Services',
+    icon: 'FaGlobe',
   },
   {
-    category: "Billing",
-    question: "Can I change my plan later?",
-    answer: "Absolutely. You can upgrade or downgrade your plan at any time from your dashboard. If you upgrade, the price will be prorated for the remainder of your billing cycle."
+    id: 3,
+    question: 'How do you ensure the security of blockchain solutions?',
+    answer: 'Our security protocol involves multi-layer audits, formal verification of smart contracts, and adherence to ISO/IEC 27001 standards. We use enterprise-grade encryption (AES-256) and TLS 1.3 for all data in transit.',
+    category: 'Security',
+    icon: 'FaShieldAlt',
   },
   {
-    category: "Technical",
-    question: "Do you offer a public API?",
-    answer: "Yes! We provide a comprehensive REST API and webhooks for all our core features. You can find the documentation at docs.yoursite.com."
+    id: 4,
+    question: 'Do you offer post-deployment support and maintenance?',
+    answer: 'Yes, we provide 24/7 technical support, regular security patches, and performance monitoring. Our maintenance plans are designed to ensure your systems remain scalable and secure as your business grows.',
+    category: 'Technical',
+    icon: 'FaTools',
+  },
+  {
+    id: 5,
+    question: 'What is your typical project timeline?',
+    answer: 'Project timelines vary based on complexity. MVP development usually takes 8-12 weeks, while large-scale enterprise systems can take 6 months or more. We follow agile methodologies to deliver value in incremental sprints.',
+    category: 'Getting Started',
+    icon: 'FaClock',
+  },
+  {
+    id: 6,
+    question: 'Can you integrate AI into our existing legacy systems?',
+    answer: 'Absolutely. We specialize in legacy modernization, creating robust API layers and middleware to integrate advanced AI and LLM capabilities into your existing infrastructure without disrupting operations.',
+    category: 'Services',
+    icon: 'FaBolt',
+  },
+  {
+    id: 7,
+    question: 'What are your payment and billing structures?',
+    answer: 'We offer flexible engagement models, including Time & Materials (T&M), Fixed Price for well-defined scopes, and Dedicated Team models for long-term partnerships. Billing is typically milestone-based.',
+    category: 'Billing',
+    icon: 'FaCreditCard',
+  },
+  {
+    id: 8,
+    question: 'Is my intellectual property (IP) protected?',
+    answer: 'Yes, IP protection is high priority. We sign comprehensive NDAs before any technical discussions, and upon project completion, full ownership of the source code and IP is transferred to you.',
+    category: 'Security',
+    icon: 'FaUsers',
   }
 ];
