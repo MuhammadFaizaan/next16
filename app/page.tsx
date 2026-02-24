@@ -39,13 +39,13 @@ export default async function Home() {
       <main>
         <HeroSection />
         <ServicesSection2 />
-        <ServicesSection />
+        {/* <ServicesSection /> */}
         <ProcessSection />
         <JourneySection />
         <PortfolioSlider />
         <TechnologyWeUse />
         <HomeCTA />
-        <IndustrySlider />
+        {/* <IndustrySlider /> */}
       </main>
       <Footer />
     </>

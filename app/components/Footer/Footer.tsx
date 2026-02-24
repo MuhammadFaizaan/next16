@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link';
-import { BsTwitterX, BsLinkedin, BsGithub, BsArrowRight } from 'react-icons/bs';
+import { BsTwitterX, BsLinkedin, BsGithub } from 'react-icons/bs';
 
 const footerLinks = [
     {
@@ -40,87 +40,89 @@ const footerLinks = [
     }
 ];
 
-// Subtle grid background component for technical texture
-const GridPattern = () => (
-    <svg className="absolute inset-0 w-full h-full opacity-[0.03] pointer-events-none" width="100%" height="100%">
-        <defs>
-            <pattern id="grid-pattern" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M0 40L40 0H20L0 20M40 40V20L20 40" stroke="currentColor" strokeWidth="1" fill="none" className="text-white" />
-            </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#grid-pattern)" />
-    </svg>
-);
-
 const Footer = () => {
     return (
-        <footer className="bg-[#050505] text-white py-10 overflow-hidden relative !border-t-[2px] !border-red-500">
-            {/* Background Effects */}
-            <GridPattern />
-            <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-red-600/10 blur-[120px] rounded-full pointer-events-none mix-blend-screen" />
-            <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-red-800/5 blur-[120px] rounded-full pointer-events-none" />
+        <footer className="relative bg-white border-t border-neutral-200">
 
-
-            <div className="max-w-[1400px] mx-auto px-6 pt-12">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr_1fr] gap-12 lg:gap-8 mb-20">
-                    {/* Brand Section */}
-                    <div className="space-y-8">
+            <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-red-500/40 to-transparent" />
+            <div className="max-w-[1400px] mx-auto px-6 pt-24 pb-14">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr_1fr] gap-14">
+                    <div className="space-y-7 pr-6 border-r border-neutral-100 lg:border-r">
                         <Link href="/" className="inline-block">
-                            <span className="text-2xl font-bold tracking-tighter text-white">
-                                NextChain<span className="text-red-600 text-3xl">X</span>
-                            </span>
+                            <h1 className="!text-3xl !font-bold text-neutral-900">
+                                NextChain<span className="text-red-600">X</span>
+                            </h1>
                         </Link>
-                        <p className="text-neutral-400 text-base leading-relaxed max-w-sm">
-                            We architect distinct digital products at the intersection of Blockchain technology and Artificial Intelligence.
+
+                        <p className="text-neutral-600 leading-relaxed max-w-md">
+                            We architect cutting-edge digital products at the intersection of
+                            Blockchain technology and Artificial Intelligence.
                         </p>
-                        <div className="flex items-center gap-3">
-                            {[
-                                { icon: BsTwitterX, href: '#' },
-                                { icon: BsLinkedin, href: '#' },
-                                { icon: BsGithub, href: '#' }
-                            ].map((social, i) => (
+                        <div className="flex items-center gap-4 pt-2">
+                            {[BsTwitterX, BsLinkedin, BsGithub].map((Icon, i) => (
                                 <Link
                                     key={i}
-                                    href={social.href}
-                                    className="w-10 h-10 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-400 hover:text-white hover:bg-red-600 hover:border-red-600 transition-all duration-300 shadow-sm"
+                                    href="#"
+                                    className="w-11 h-11 rounded-lg border border-neutral-200 bg-white 
+                                               flex items-center justify-center text-neutral-500 
+                                               hover:text-red-600 hover:border-red-400/60 
+                                               hover:shadow-sm transition-all duration-300"
                                 >
-                                    <social.icon size={18} />
+                                    <Icon size={18} />
                                 </Link>
                             ))}
                         </div>
                     </div>
 
-                    {/* Links Sections */}
-                    {footerLinks.map((section, idx) => (
+                    {footerLinks.map((section) => (
                         <div key={section.title} className="space-y-6">
-                            <h4 className="!font-semibold text-white uppercase tracking-wider opacity-90 !mb-6">
+
+                            <h4 className="text-sm !font-semibold uppercase tracking-wider text-neutral-800 border-b border-neutral-200 pb-3">
                                 {section.title}
                             </h4>
-                            <ul className="space-y-3">
+
+                            <ul className="space-y-3 pt-2">
                                 {section.links.map((link) => (
                                     <li key={link.name}>
                                         <Link
                                             href={link.href}
-                                            className="text-neutral-400 hover:text-white transition-colors text-[15px] block py-1 group flex items-center gap-2"
+                                            className="text-neutral-600 hover:text-red-600 
+                                                       transition-colors duration-200 text-[15px] 
+                                                       inline-block"
                                         >
                                             {link.name}
                                         </Link>
                                     </li>
                                 ))}
                             </ul>
+
                         </div>
                     ))}
+
                 </div>
 
-                {/* Bottom Bar */}
-                <div className="pt-8 border-t border-neutral-900 flex flex-col md:flex-row items-center justify-between gap-4 text-neutral-500 text-sm">
-                    <p>© {new Date().getFullYear()} NextChainX. All rights reserved.</p>
-                    <div className="flex items-center gap-6">
-                        <Link href="/privacy" className="hover:text-neutral-300 transition-colors">Privacy</Link>
-                        <Link href="/terms" className="hover:text-neutral-300 transition-colors">Terms</Link>
-                        <Link href="/sitemap" className="hover:text-neutral-300 transition-colors">Sitemap</Link>
+                <div className="mt-20 pt-8 border-t border-neutral-200 
+                                flex flex-col md:flex-row items-center 
+                                justify-between gap-6 text-sm text-neutral-500">
+
+                    <p>
+                        © {new Date().getFullYear()} NextChainX. All rights reserved.
+                    </p>
+
+                    <div className="flex items-center gap-8">
+                        <Link href="/privacy" className="hover:text-red-600 transition-colors">
+                            Privacy
+                        </Link>
+                        <Link href="/terms" className="hover:text-red-600 transition-colors">
+                            Terms
+                        </Link>
+                        <Link href="/sitemap" className="hover:text-red-600 transition-colors">
+                            Sitemap
+                        </Link>
                     </div>
+
                 </div>
+
             </div>
         </footer>
     );
