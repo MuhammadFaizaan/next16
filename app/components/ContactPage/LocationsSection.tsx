@@ -26,7 +26,7 @@ const locations = [
 export default function LocationsSection() {
     return (
         <Box py={{ base: 20, md: 32 }} bg="white">
-            <Container maxW="container.xl">
+            <Container maxW="1400px">
                 <VStack spacing={12} align="center">
                     <VStack spacing={4} textAlign="center">
                         <Heading as="h2" fontSize={{ base: "3xl", md: "5xl" }} fontWeight="800">

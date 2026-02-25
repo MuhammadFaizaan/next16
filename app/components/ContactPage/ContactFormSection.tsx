@@ -88,7 +88,7 @@ export default function ContactFormSection() {
 
     return (
         <Box py={{ base: 20, md: 32 }} bg="gray.50">
-            <Container maxW="container.xl">
+            <Container maxW="1400px">
                 <Grid templateColumns={{ base: "1fr", lg: "repeat(2, 1fr)" }} gap={16} alignItems="start">
                     <VStack align="flex-start" spacing={10}>
                         <VStack align="flex-start" spacing={4}>

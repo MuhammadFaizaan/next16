@@ -62,7 +62,7 @@ export default function PageHero({
                     initial={isTopLayer ? { opacity: 0, y: 30 } : undefined}
                     animate={isTopLayer ? { opacity: 1, y: 0 } : undefined}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    maxW="5xl"
+                    maxW="7xl"
                 >
                     {title}
                 </MotionHeading>
@@ -71,7 +71,7 @@ export default function PageHero({
                     initial={isTopLayer ? { opacity: 0, y: 20 } : undefined}
                     animate={isTopLayer ? { opacity: 1, y: 0 } : undefined}
                     transition={{ duration: 0.6, delay: 0.4 }}
-                    mt={12}
+                    mt={8}
                 >
                     <Link href={ctaHref}>
                         <Button
