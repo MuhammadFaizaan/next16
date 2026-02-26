@@ -24,16 +24,10 @@ const testimonials = [
         image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop",
     },
     {
-        quote: "The team here is like a family. We support each other and push the boundaries of what's possible every day.",
-        name: "Sarah Jenkins",
-        role: "UX Designer",
-        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop",
-    },
-    {
-        quote: "I've never worked at a place that cares so much about its people. The perks are just the icing on the cake.",
-        name: "David Chen",
-        role: "Product Manager",
-        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop",
+        quote: "The collaborative environment and high standards driven by the leadership make every day a learning experience.",
+        name: "Elena Rodriguez",
+        role: "QA Lead",
+        image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop",
     },
 ];
 
@@ -43,15 +37,15 @@ export default function TestimonialSlider() {
     return (
         <Box py={32} bg="white">
             <Container maxW="1400px">
-                <VStack spacing={16} align="flex-start">
-                    <Box maxW="800px">
-                        <Flex align="center" gap={3} mb={6}>
+                <VStack spacing={20} align="flex-start">
+                    <Box maxW="900px">
+                        <Flex align="center" gap={3} mb={8}>
                             <Box w="40px" h="2px" bg="red.600" />
                             <Text fontWeight="bold" fontSize="sm" letterSpacing="0.1em" textTransform="uppercase" color="red.600">
                                 Testimonials
                             </Text>
                         </Flex>
-                        <Heading fontSize={{ base: "3xl", md: "5xl" }} fontWeight="800">
+                        <Heading fontSize={{ base: "3xl", md: "5xl", lg: "6xl" }} fontWeight="800" lineHeight="1.1">
                             Let’s see why our team members love NextChainX
                         </Heading>
                     </Box>

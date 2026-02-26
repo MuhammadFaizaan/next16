@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Container, Heading, Text, SimpleGrid, Image, Flex, Icon } from '@chakra-ui/react';
+import { Box, Container, Heading, Text, SimpleGrid, Image, Flex, Icon, VStack } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { FiPlay } from 'react-icons/fi';
 
@@ -16,15 +16,15 @@ export default function OfficeLife() {
     return (
         <Box py={32} bg="white">
             <Container maxW="1400px">
-                <VStack spacing={16} align="flex-start">
-                    <Box>
-                        <Flex align="center" gap={3} mb={6}>
+                <VStack spacing={20} align="flex-start">
+                    <Box maxW="900px">
+                        <Flex align="center" gap={3} mb={8}>
                             <Box w="40px" h="2px" bg="red.600" />
                             <Text fontWeight="bold" fontSize="sm" letterSpacing="0.1em" textTransform="uppercase" color="red.600">
                                 Inside the office
                             </Text>
                         </Flex>
-                        <Heading fontSize={{ base: "3xl", md: "5xl" }} fontWeight="800">
+                        <Heading fontSize={{ base: "3xl", md: "5xl", lg: "6xl" }} fontWeight="800" lineHeight="1.1">
                             Live from our office
                         </Heading>
                     </Box>
@@ -79,6 +79,3 @@ export default function OfficeLife() {
         </Box>
     );
 }
-
-// Fixed import for VStack which was missing in the snippet above
-import { VStack } from '@chakra-ui/react';

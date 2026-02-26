@@ -15,7 +15,7 @@ export default function CareersClient() {
     return (
         <>
             <Header />
-            <Box as="main" bg="white" overflow="hidden">
+            <Box as="main" bg="white">
                 <CareerHero />
                 <CultureSlider />
                 <HiringProcess />

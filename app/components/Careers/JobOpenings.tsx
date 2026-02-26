@@ -41,7 +41,7 @@ const MotionBox = motion(Box);
 export default function JobOpenings() {
     return (
         <Box py={32} bg="black">
-            <Container maxW="1200px">
+            <Container maxW="1400px">
                 <VStack spacing={16} align="center" textAlign="center">
                     <Box>
                         <Heading fontSize={{ base: "4xl", md: "5xl" }} fontWeight="800" color="white" mb={4}>
@@ -71,7 +71,7 @@ export default function JobOpenings() {
                                 cursor="pointer"
                                 // @ts-ignore
                                 transition="all 0.3s"
-                                _hover={{ bg: "white", borderColor: "red.500" }}
+                                _hover={{ bg: "transparent", borderColor: "red.500" }}
                             >
                                 <VStack align="flex-start" spacing={4}>
                                     <HStack spacing={2}>
@@ -79,11 +79,11 @@ export default function JobOpenings() {
                                             {pos.dept}
                                         </Text>
                                         <Box w="4px" h="4px" borderRadius="full" bg="whiteAlpha.300" />
-                                        <Text fontSize="xs" fontWeight="bold" color="whiteAlpha.500" _groupHover={{ color: "gray.500" }}>
+                                        <Text fontSize="xs" fontWeight="bold" color="whiteAlpha.500">
                                             {pos.type}
                                         </Text>
                                     </HStack>
-                                    <Heading fontSize="xl" fontWeight="700" color="white" _groupHover={{ color: "black" }}>
+                                    <Heading fontSize="xl" fontWeight="700" color="white">
                                         {pos.title}
                                     </Heading>
                                     <Button

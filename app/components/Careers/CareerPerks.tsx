@@ -17,10 +17,6 @@ const perks = [
         description: 'Access to professional courses, certifications, and internal workshops to keep your skills sharp.',
     },
     {
-        title: 'Health insurance',
-        description: 'Comprehensive health coverage for you and your family, because well-being comes first.',
-    },
-    {
         title: 'Team events',
         description: 'Regular meet-ups, retreats, and social events to build lasting bonds with your teammates.',
     },
@@ -36,20 +32,20 @@ export default function CareerPerks() {
     return (
         <Box py={32} bg="gray.50">
             <Container maxW="1400px">
-                <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={20}>
-                    <Box>
-                        <Box position="sticky" top="150px">
-                            <Flex align="center" gap={3} mb={6}>
+                <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={20} alignItems="stretch">
+                    <Box h="100%">
+                        <Box position="sticky" top="120px">
+                            <Flex align="center" gap={3} mb={8}>
                                 <Box w="40px" h="2px" bg="red.600" />
                                 <Text fontWeight="bold" fontSize="sm" letterSpacing="0.1em" textTransform="uppercase" color="red.600">
                                     Benefits
                                 </Text>
                             </Flex>
-                            <Heading fontSize={{ base: "4xl", md: "5xl" }} fontWeight="800" mb={8}>
+                            <Heading fontSize={{ base: "3xl", md: "5xl", lg: "6xl" }} fontWeight="800" mb={10} lineHeight="1.1">
                                 Our perks and <br />
                                 <Box as="span" color="red.600">benefits</Box>
                             </Heading>
-                            <Text fontSize="lg" color="gray.600" maxW="450px">
+                            <Text fontSize={{ base: "lg", md: "xl" }} color="gray.600" maxW="500px">
                                 We've designed our benefits to support your professional growth and personal well-being.
                             </Text>
                         </Box>

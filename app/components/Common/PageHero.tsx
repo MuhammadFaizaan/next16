@@ -133,7 +133,7 @@ export default function PageHero({
                             h="100%"
                             objectFit="cover"
                             objectPosition="center"
-                            opacity={0.5}
+                            opacity={0.6}
                         />
                     ) : (
                         <Image
@@ -143,7 +143,7 @@ export default function PageHero({
                             h="100%"
                             objectFit="cover"
                             objectPosition="center"
-                            opacity={0.5}
+                            opacity={0.6}
                         />
                     )}
 
@@ -151,7 +151,7 @@ export default function PageHero({
                     <Box
                         position="absolute"
                         inset={0}
-                        bg="linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%)"
+                        bg="linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.2) 100%)"
                     />
                 </Box>
 

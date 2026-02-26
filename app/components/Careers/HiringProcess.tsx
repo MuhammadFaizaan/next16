@@ -28,18 +28,18 @@ export default function HiringProcess() {
     return (
         <Box bg="black" py={32} color="white" position="relative">
             <Container maxW="1400px">
-                <VStack spacing={16} align="flex-start">
-                    <Box maxW="800px">
-                        <Flex align="center" gap={3} mb={6}>
+                <VStack spacing={20} align="flex-start">
+                    <Box maxW="900px">
+                        <Flex align="center" gap={3} mb={8}>
                             <Box w="40px" h="2px" bg="red.600" />
                             <Text fontWeight="bold" fontSize="sm" letterSpacing="0.1em" textTransform="uppercase" color="red.600">
                                 How we hire
                             </Text>
                         </Flex>
-                        <Heading fontSize={{ base: "3xl", md: "5xl" }} fontWeight="800">
+                        <Heading fontSize={{ base: "3xl", md: "5xl", lg: "6xl" }} fontWeight="800" lineHeight="1.1">
                             Our <Box as="span" color="red.600">hiring process</Box>
                         </Heading>
-                        <Text fontSize="lg" color="whiteAlpha.700" mt={6}>
+                        <Text fontSize={{ base: "lg", md: "xl" }} color="whiteAlpha.800" mt={8}>
                             We look for more than just technical skills. We want to find people who share our passion for excellence and innovation.
                         </Text>
                     </Box>
