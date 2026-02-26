@@ -49,7 +49,7 @@ export default function IndustryDetailClient({ industry }: IndustryDetailClientP
                 <PageHero
                     title={industry.title}
                     subtitle={`Industries / ${industry.title}`}
-                    image={industry.image}
+                    media={industry.image}
                     ctaText="GET IN TOUCH"
                     ctaHref="/contact"
                 />

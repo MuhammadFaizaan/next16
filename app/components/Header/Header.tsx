@@ -205,7 +205,7 @@ const Header = () => {
                 </span>
               </Link>
 
-              <div className="hidden h-6 w-[1px] bg-neutral-200 lg:block"></div>
+              {/* <div className="hidden h-6 w-[1px] bg-neutral-200 lg:block"></div> */}
             </div>
 
             {/* Desktop Navigation */}

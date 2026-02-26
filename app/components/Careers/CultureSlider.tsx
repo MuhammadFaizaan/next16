@@ -14,7 +14,7 @@ const images = [
 
 export default function CultureSlider() {
     return (
-        <Box py={32} bg="white" overflow="hidden">
+        <Box pb={32} bg="white" overflow="hidden">
             <Container maxW="1400px" mb={16}>
                 <VStack align="flex-start" spacing={6}>
                     <Flex align="center" gap={3}>

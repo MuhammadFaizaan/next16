@@ -21,7 +21,7 @@ export default function ServicesPage() {
                 <PageHero
                     title="Our Expertise"
                     subtitle="Services"
-                    image="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2672&auto=format&fit=crop"
+                    media="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2672&auto=format&fit=crop"
                     ctaText="GET IN TOUCH"
                     ctaHref="/contact"
                 />

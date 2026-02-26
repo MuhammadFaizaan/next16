@@ -60,7 +60,7 @@ export default async function CategoryPage({ params }: PageProps) {
                 <PageHero
                     title={categoryData.title}
                     subtitle={`Services / ${categoryData.title}`}
-                    image="https://images.unsplash.com/photo-1558494949-ef010cbdcc48?q=80&w=2626&auto=format&fit=crop"
+                    media="https://images.unsplash.com/photo-1558494949-ef010cbdcc48?q=80&w=2626&auto=format&fit=crop"
                     ctaText="GET IN TOUCH"
                     ctaHref="/contact"
                 />

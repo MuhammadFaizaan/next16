@@ -5,7 +5,7 @@ export default function AboutHero() {
         <PageHero
             title="Better Tech Means Together."
             subtitle="About Us"
-            image="/images/about-team.png"
+            media="/images/about-team.png"
             ctaText="GET IN TOUCH"
             ctaHref="/contact"
         />

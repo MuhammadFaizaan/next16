@@ -17,10 +17,9 @@ export default function WorkClient() {
             <main>
                 <WorkHero />
 
-                <Box py={{ base: 20, md: 32 }} bg="white">
-                    <Container maxW="1200px">
+                <Box pb={{ base: 20, md: 32 }} bg="white">
+                    <Container maxW="1400px">
                         <VStack spacing={20} align="stretch">
-                            {/* Section Header - Subtle */}
                             <MotionBox
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}

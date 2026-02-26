@@ -23,7 +23,7 @@ export default function LegalLayout({ title, lastUpdated, children }: LegalLayou
       <PageHero
         title={title}
         subtitle={`Legal / ${title} / Last Updated: ${lastUpdated}`}
-        image="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2670&auto=format&fit=crop"
+        media="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2670&auto=format&fit=crop"
         ctaText="GET IN TOUCH"
         ctaHref="/contact"
       />

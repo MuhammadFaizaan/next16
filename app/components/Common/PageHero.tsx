@@ -11,7 +11,7 @@ const MotionHeading = motion(Heading);
 interface PageHeroProps {
     title: string;
     subtitle?: string;
-    image: string;
+    media: string;
     ctaText?: string;
     ctaHref?: string;
 }
@@ -19,10 +19,11 @@ interface PageHeroProps {
 export default function PageHero({
     title,
     subtitle,
-    image,
+    media,
     ctaText = "GET IN TOUCH",
     ctaHref = "/contact"
 }: PageHeroProps) {
+    const isVideo = /\.(mp4|webm|ogg)$/i.test(media);
 
     const HeroContent = ({ isTopLayer }: { isTopLayer: boolean }) => (
         <Container maxW="1400px" position="relative" h="100%">
@@ -120,15 +121,33 @@ export default function PageHero({
                 overflow="hidden"
             >
                 <Box position="absolute" inset={0} bg="#050505">
-                    <Image
-                        src={image}
-                        alt=""
-                        w="100%"
-                        h="100%"
-                        objectFit="cover"
-                        objectPosition="center"
-                        opacity={0.5}
-                    />
+                    {isVideo ? (
+                        <Box
+                            as="video"
+                            src={media}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            w="100%"
+                            h="100%"
+                            objectFit="cover"
+                            objectPosition="center"
+                            opacity={0.5}
+                        />
+                    ) : (
+                        <Image
+                            src={media}
+                            alt=""
+                            w="100%"
+                            h="100%"
+                            objectFit="cover"
+                            objectPosition="center"
+                            opacity={0.5}
+                        />
+                    )}
+
+                    {/* Dark Overlay */}
                     <Box
                         position="absolute"
                         inset={0}

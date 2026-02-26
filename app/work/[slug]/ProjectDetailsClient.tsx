@@ -68,7 +68,7 @@ export default function ProjectDetailsClient() {
                 <PageHero
                     title={project.title}
                     subtitle={`Work / ${project.category} / ${project.title}`}
-                    image={project.thumbnail}
+                    media={project.thumbnail}
                     ctaText="GET IN TOUCH"
                     ctaHref="/contact"
                 />

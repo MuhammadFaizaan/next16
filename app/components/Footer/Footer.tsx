@@ -111,13 +111,10 @@ const Footer = () => {
 
                     <div className="flex items-center gap-8">
                         <Link href="/privacy" className="hover:text-red-600 transition-colors">
-                            Privacy
+                            Privacy Policy
                         </Link>
                         <Link href="/terms" className="hover:text-red-600 transition-colors">
-                            Terms
-                        </Link>
-                        <Link href="/sitemap" className="hover:text-red-600 transition-colors">
-                            Sitemap
+                            Terms & Conditions
                         </Link>
                     </div>
 

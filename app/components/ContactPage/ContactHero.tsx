@@ -5,7 +5,7 @@ export default function ContactHero() {
         <PageHero
             title="Let's Build Something Exceptional Together"
             subtitle="Contact Us"
-            image="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2670&auto=format&fit=crop"
+            media="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2670&auto=format&fit=crop"
             ctaText="GET IN TOUCH"
             ctaHref="#contact-form"
         />

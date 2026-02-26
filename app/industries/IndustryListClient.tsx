@@ -23,7 +23,7 @@ export default function IndustryListClient() {
                 <PageHero
                     title="Expertise Across Every Domain"
                     subtitle="Revolutionizing Industries through Engineering Excellence"
-                    image="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2670&auto=format&fit=crop"
+                    media="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2670&auto=format&fit=crop"
                     ctaText="GET IN TOUCH"
                     ctaHref="/contact"
                 />

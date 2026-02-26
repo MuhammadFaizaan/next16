@@ -67,7 +67,7 @@ export default async function ServiceDetailsPage({ params }: PageProps) {
                 <PageHero
                     title={serviceData.title}
                     subtitle={`${categoryData.title} / ${serviceData.title}`}
-                    image={serviceData.image}
+                    media={serviceData.image}
                     ctaText="GET IN TOUCH"
                     ctaHref="/contact"
                 />
